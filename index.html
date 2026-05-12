@@ -6,38 +6,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
+<title>Tiger Tech Estimator</title>
 
 <style>
 
 body {
-  margin:0;
-  font-family:Inter;
-  background: radial-gradient(circle at top, #2a0f4d, #050505);
-  color:white;
-}
-
-/* HERO */
-.hero {
-  text-align:center;
-  padding:80px 20px;
-}
-
-.hero h1 {
-  font-family:Cinzel;
-  font-size:48px;
-}
-
-/* ESTIMATOR */
-.calc-box {
+  font-family: Arial;
   background:#111;
-  border:2px solid #7A3FFF;
-  padding:25px;
-  border-radius:10px;
+  color:white;
+  padding:20px;
+}
+
+.calc-box {
+  background:#222;
+  padding:20px;
   max-width:500px;
   margin:auto;
+  border-radius:10px;
 }
 
 input, select {
@@ -52,10 +37,9 @@ input, select {
 }
 
 button {
-  padding:10px;
   margin-top:10px;
+  padding:10px;
   width:100%;
-  cursor:pointer;
 }
 
 </style>
@@ -64,10 +48,7 @@ button {
 
 <body>
 
-<section class="hero">
-<h1>Tiger Tech Consulting</h1>
-<p>Project Estimator</p>
-</section>
+<h1 style="text-align:center;">Tiger Tech Estimator</h1>
 
 <div class="calc-box">
 
@@ -91,57 +72,59 @@ button {
 
 <script>
 
-/* MAIN ELEMENTS */
 const category = document.getElementById("category");
 const options = document.getElementById("options");
 const totalDisplay = document.getElementById("total");
 const breakdown = document.getElementById("breakdown");
 
-/* CATEGORY CHANGE */
+/* ✅ CREATE INPUT AFTER SELECTION */
 category.addEventListener("change", function(){
 
 options.innerHTML = "";
 
-if(this.value === ""){
-totalDisplay.innerHTML="$0";
+if(!this.value){
+resetCalc();
 return;
 }
 
-/* ALWAYS CREATE INPUT */
 options.innerHTML = `
 <label>Enter Quantity</label>
-<input type="number" id="qty" min="1" placeholder="Enter number">
+<input id="qty" type="number" min="1">
 `;
+
+/* ✅ FORCE CALC CHECK AFTER ELEMENT EXISTS */
+setTimeout(calculate, 100);
 
 });
 
-/* ✅ GLOBAL CALCULATION FUNCTION */
+/* ✅ CALCULATE */
+document.addEventListener("input", calculate);
+document.addEventListener("change", calculate);
+
 function calculate(){
 
 let qtyField = document.getElementById("qty");
 
 if(!qtyField){
-totalDisplay.innerHTML = "$0";
-breakdown.innerHTML = "";
 return;
 }
 
 let qty = parseInt(qtyField.value);
 
-if(!qty || qty <= 0){
+/* ✅ WAIT UNTIL USER ENTERS VALUE */
+if(isNaN(qty) || qty <= 0){
 totalDisplay.innerHTML="$0";
 breakdown.innerHTML="";
 return;
 }
 
-/* SERVICE TYPE */
+/* ✅ SAFE CATEGORY READ */
 let type = category.value;
 
-/* PRICING */
+/* ✅ PRICING */
 let materialRate = 150;
 let laborHours = 4;
 
-/* LOGIC PER SERVICE */
 if(type === "lighting"){
 materialRate = 180;
 laborHours = qty * 0.5 + 1;
@@ -167,21 +150,19 @@ materialRate = 250;
 laborHours = 3;
 }
 
-/* LABOR */
-let lead = 125;
-let assist = 80;
-let labor = (laborHours * lead) + (laborHours * assist);
+/* ✅ LABOR */
+let labor = (laborHours * 125) + (laborHours * 80);
 
-/* OTHER COSTS */
+/* ✅ OTHER COSTS */
 let travel = 50;
 let overhead = 0.30;
 let profit = 0.20;
 
-/* FINAL */
+/* ✅ FINAL */
 let subtotal = (qty * materialRate) + labor + travel;
 let total = Math.round(subtotal * (1 + overhead + profit));
 
-/* DISPLAY */
+/* ✅ DISPLAY */
 totalDisplay.innerHTML = "$" + total;
 
 breakdown.innerHTML = `
@@ -195,10 +176,7 @@ Profit: 20%<br>
 
 }
 
-/* ✅ LISTEN TO INPUT PROPERLY */
-document.addEventListener("input", calculate);
-
-/* RESET */
+/* ✅ RESET */
 function resetCalc(){
 category.value="";
 options.innerHTML="";
@@ -210,3 +188,4 @@ breakdown.innerHTML="";
 
 </body>
 </html>
+
