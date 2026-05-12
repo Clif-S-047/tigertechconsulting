@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tiger Tech Consulting | IT Consulting Virginia Beach</title>
+
+<meta name="description" content="Tiger Tech Consulting provides IT consulting, smart home integration, custom LED lighting, home theater systems, and energy-efficient solutions in Virginia Beach.">
+
+<meta name="keywords" content="IT consulting Virginia Beach, smart home integration, LED lighting, home theater systems, cybersecurity, energy efficiency">
+
+https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;500;700&display=swap
+
+<style>
+:root {
+  --purple: #7A3FFF;
+  --gold: #FFD700;
+  --black: #050505;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: white;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  width: 90%;
+  margin: 10px 5%;
+  padding: 15px 30px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  z-index: 10;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: 'Orbitron';
+  font-size: 64px;
+  background: linear-gradient(90deg, #fff, var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* BUTTON */
+.btn {
+  padding: 14px 30px;
+  background: linear-gradient(90deg, var(--gold), #fff);
+  color: black;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  box-shadow: 0 0 25px var(--gold);
+}
+
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 80px;
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px violet;
+}
+
+/* BEFORE AFTER */
+.slider-container {
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
+
+.slider-container img {
+  width: 100%;
+}
+
+.after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: inset(0 50% 0 0);
+}
+
+/* CALCULATOR */
+.calculator {
+  text-align: center;
+  padding: 50px;
+}
+
+.result {
+  font-size: 30px;
+  color: var(--gold);
+}
+
+/* CHATBOT */
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  logo.png
+  #contactGet Started</a>
+</header>
+
+<section class="hero">
+
+<canvas id="particles"></canvas>
+
+<h1 id="typing"></h1>
+<p>Smart Homes • IT Solutions • Lighting • Security</p>
+
+#contactFree Consultation</a>
+
+</section>
+
+<section class="services">
+
+<div class="card"><h3>IT Consulting</h3><p>Advanced business technology solutions.</p></div>
+<div class="card"><h3>Smart Home</h3><p>Full automation and control systems.</p></div>
+<div class="card"><h3>LED Lighting</h3><p>Custom landscape & architectural lighting.</p></div>
+<div class="card"><h3>Home Theater</h3><p>Premium audio/video installations.</p></div>
+
+</section>
+
+<section>
+<h2 style="text-align:center;">Before & After</h2>
+
+<div class="slider-container">
+  before.jpg
+  after.jpg
+  <input type="range" min="0" max="100" value="50" id="slider">
+</div>
+</section>
+
+<section class="calculator">
+<h2>Project Estimate</h2>
+
+<input id="devices" type="number" placeholder="Devices">
+<input id="rooms" type="number" placeholder="Rooms">
+
+<div class="result" id="result">$0</div>
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+
+https://formspree.io/f/xqennkdp
+<input type="text" name="name" placeholder="Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<textarea name="message" placeholder="Message"></textarea>
+<button type="submit">Send</button>
+</form>
+
+<br>
+
+
+<iframe src="https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation"
+width="100%" height="600" frameborder="0"></iframe>
+``
+
+
+</section>
+
+<footer>
+© 2026 Tiger Tech Consulting
+</footer>
+
+<!-- CHATBOT -->
+<div id="chatbot">
+<input id="chatInput" placeholder="Ask...">
+<button onclick="chat()">Send</button>
+<div id="chatOutput"></div>
+</div>
+
+<script>
+
+// TYPING
+let text = "Tiger Tech Consulting";
+let i = 0;
+function typing() {
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 60);
+  }
+}
+typing();
+
+// PARTICLES
+let canvas = document.getElementById("particles");
+let ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+for(let i=0;i<60;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    dx:1, dy:1
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  particles.forEach(p=>{
+    ctx.fillStyle="#FFD700";
+    ctx.fillRect(p.x,p.y,2,2);
+
+    p.x+=p.dx; p.y+=p.dy;
+
+    if(p.x<0||p.x>canvas.width) p.dx*=-1;
+    if(p.y<0||p.y>canvas.height) p.dy*=-1;
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// CALCULATOR
+document.querySelectorAll('input').forEach(input=>{
+  input.addEventListener('input', ()=>{
+    let d = document.getElementById("devices").value || 0;
+    let r = document.getElementById("rooms").value || 0;
+    document.getElementById("result").innerHTML = "$" + (d*200 + r*400);
+  });
+});
+
+// BEFORE/AFTER
+document.getElementById("slider").oninput = function(){
+  document.getElementById("afterImg").style.clipPath =
+    `inset(0 ${100-this.value}% 0 0)`;
+};
+
+// CHATBOT
+function chat(){
+  let input = document.getElementById("chatInput").value.toLowerCase();
+  let output = "Ask about pricing, lighting, or booking.";
+
+  if(input.includes("price")) output="Pricing varies. Want a free estimate?";
+  if(input.includes("book")) window.open("https://calendly.com/YOUR-LINK");
+  
+  document.getElementById("chatOutput").innerHTML = output;
+}
+
+</script>
+
+</body>
+</html>
