@@ -2,133 +2,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting | Smart Home & Lighting Virginia Beach</title>
+<title>Tiger Tech Consulting | Estimator System</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
-/* GLOBAL */
 body {
   margin:0;
   font-family:Inter;
+  background:#050505;
   color:white;
-  background: radial-gradient(circle at top, #2a0f4d, #050505);
-  overflow-x:hidden;
-}
-
-/* HEADER */
-.header {
-  position:sticky;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 40px;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.6);
-  z-index:100;
-}
-
-.logo img {
-  height:70px;
-}
-
-/* NAV */
-.nav a {
-  margin:0 15px;
-  color:white;
-  text-decoration:none;
-  position:relative;
-}
-
-.nav a::after {
-  content:"";
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:gold;
-  transition:.3s;
-}
-.nav a:hover::after {
-  width:100%;
-}
-
-/* SOCIAL */
-.social a {
-  font-size:22px;
-  margin:0 8px;
-  transition:0.3s;
-}
-.social a:hover {
-  transform:translateY(-3px);
-  text-shadow:0 0 12px gold;
-}
-
-/* AUTH */
-.auth input {
-  width:120px;
-  margin:2px;
-  padding:6px;
-  border-radius:5px;
-  border:none;
-}
-
-.auth button {
-  margin:2px;
-  padding:6px 10px;
 }
 
 /* HERO */
 .hero {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   text-align:center;
+  padding:80px 20px;
 }
-
 .hero h1 {
   font-family:Cinzel;
-  font-size:80px;
-  background:linear-gradient(90deg, white, gold);
-  -webkit-background-clip:text;
-  color:transparent;
+  font-size:50px;
 }
 
-.hero p {
-  font-size:22px;
-}
-
-/* BUTTON */
-.btn {
-  margin-top:20px;
-  padding:14px 30px;
-  background:linear-gradient(90deg, gold, #fff);
-  border-radius:30px;
-  color:black;
-  font-weight:bold;
-}
-
-.btn:hover {
-  transform:translateY(-3px);
-  box-shadow:0 0 20px gold;
-}
-
-/* QUOTE BOX */
+/* BOX */
 .calc-box {
-  background:rgba(122,63,255,.25);
+  background:#111;
   border:2px solid #7A3FFF;
-  box-shadow:0 0 30px #7A3FFF;
   padding:30px;
-  max-width:600px;
+  max-width:650px;
   margin:auto;
   border-radius:15px;
 }
@@ -136,110 +41,45 @@ body {
 input, select {
   width:100%;
   padding:10px;
-  margin:10px 0;
+  margin-top:10px;
 }
 
+/* RESULT */
 #total {
   font-size:30px;
   color:gold;
 }
 
+button {
+  padding:12px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
 /* MOBILE */
 @media (max-width:768px){
-
-.header {
-  flex-direction:column;
-  align-items:center;
-}
-
-.nav {
-  margin-top:10px;
-}
-.nav a {
-  display:block;
-  margin:8px 0;
-}
-
-.social {
-  margin-top:10px;
-}
-
-.hero h1 {
-  font-size:40px;
-}
-
-.auth {
-  display:flex;
-  flex-direction:column;
-  width:100%;
-}
-
-.auth input {
-  width:100%;
-}
-
-.calc-box {
-  width:90%;
-}
-
-button {
-  width:100%;
-}
-
+  .hero h1 {font-size:32px;}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
-
-<header class="header">
-
-<div class="logo">
-  <img src="logo.png">
-</div>
-
-<nav class="nav">
-  <a href="about.html">About</a>
-  <a href="residential.html">Residential</a>
-  <a href="commercial.html">Commercial</a>
-  <a href="blog.html">Blog</a>
-</nav>
-
-<div class="social">
-  <a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">🔵</a>
-  <a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">📸</a>
-  <a href="https://www.tiktok.com/@lane.smith501" target="_blank">🎵</a>
-</div>
-
-<div class="auth">
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="signup()">Sign Up</button>
-  <button onclick="login()">Login</button>
-</div>
-
-</header>
-
 <section class="hero">
 <h1>Tiger Tech Consulting</h1>
-<p>Smart Homes • Lighting • IT Solutions</p>
-<a href="#quote" class="btn">Get Quote</a>
+<p>Professional Project Estimator</p>
 </section>
-
-<section id="quote">
-<h2 style="text-align:center">Build Your Quote</h2>
 
 <div class="calc-box">
 
 <select id="category">
 <option value="">Select Service</option>
-<option value="lighting">Lighting</option>
-<option value="audio">Audio</option>
-<option value="video">Video</option>
+<option value="lighting">Lighting Installation</option>
+<option value="audio">Audio System</option>
+<option value="video">Video / TV Mount</option>
+<option value="network">Networking</option>
+<option value="garage">Garage Door</option>
 </select>
 
 <div id="options"></div>
@@ -247,106 +87,191 @@ button {
 <h3 id="total">$0</h3>
 <div id="breakdown"></div>
 
-<button onclick="download()">Download Quote</button>
-<button onclick="book()">Book Now</button>
+<button onclick="resetCalc()">Reset</button>
+<button onclick="downloadPDF()">Download PDF</button>
 
 </div>
-</section>
 
-<h2 style="text-align:center;">Quote History</h2>
-<div id="history"></div>
-
-<section style="padding:60px; text-align:center;">
-<h2>Customer Reviews</h2>
-
-<iframe src="https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed" width="100%" height="300"></iframe>
-
-</section>
-
-<h2 style="text-align:center;">Admin Dashboard</h2>
-<div id="admin"></div>
-
-<footer>
-<p>Follow Us</p>
-
-<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a> |
-<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a> |
-<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
-
-<p>© 2026 Tiger Tech Consulting</p>
-</footer>
-
-<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
 
-// FIREBASE INIT
+/* FIREBASE */
 firebase.initializeApp({
-  apiKey: "AIzaSyCNJ8ryHB9x3iCQPi3lG4-m-RBqEiuWWmQ",
-  authDomain: "tiger-tech-consulting.firebaseapp.com",
-  projectId: "tiger-tech-consulting"
+  apiKey:"AIzaSyCNJ8ryHB9x3iCQPi3lG4-m-RBqEiuWWmQ",
+  projectId:"tiger-tech-consulting"
 });
 
-const auth = firebase.auth();
 const db = firebase.firestore();
-let currentUser=null;
 
-// LOGIN
-function signup(){ auth.createUserWithEmailAndPassword(email.value,password.value);}
-function login(){ auth.signInWithEmailAndPassword(email.value,password.value);}
+/* ELEMENTS */
+const options = document.getElementById("options");
+const totalDisplay = document.getElementById("total");
+const breakdown = document.getElementById("breakdown");
 
-function book(){
-  window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
+/* CATEGORY */
+document.getElementById("category").onchange = function(){
+
+let v = this.value;
+options.innerHTML = "";
+
+if(v === "lighting"){
+options.innerHTML = `
+<select id="type">
+<option value="">Indoor or Outdoor</option>
+<option value="indoor">Indoor</option>
+<option value="outdoor">Outdoor</option>
+</select>
+<input id="qty" placeholder="Number of Fixtures">
+`;
 }
 
-// CALCULATOR
-document.getElementById("category").onchange=function(){
-  options.innerHTML=`<input id="qty" placeholder="Units">`;
+if(v === "audio"){
+options.innerHTML = `<input id="qty" placeholder="Number of Speakers">`;
+}
+
+if(v === "video"){
+options.innerHTML = `
+<select id="mount">
+<option value="">Wall Mount?</option>
+<option value="yes">Yes</option>
+<option value="no">No</option>
+</select>
+`;
+}
+
+if(v === "network"){
+options.innerHTML = `<input id="qty" placeholder="Data Drops">`;
+}
+
+if(v === "garage"){
+options.innerHTML = `<input id="qty" placeholder="Units">`;
+}
+
 };
 
-document.addEventListener("input",()=>{
-  let qty=document.getElementById("qty")?.value||0;
-  let total=Math.round((qty*150+125*4)*1.3);
-  totalDisplay.innerHTML="$"+total;
-  breakdown.innerHTML="Total: $"+total;
-});
+/* CALCULATOR LOGIC */
+document.addEventListener("input", () => {
 
-// PARTICLES
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let count=window.innerWidth<768?40:80;
-let particles=[];
-
-for(let i=0;i<count;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
-});
+let qty = parseInt(document.getElementById("qty")?.value || 0);
+if(!qty || qty <= 0){
+totalDisplay.innerHTML="$0";
+breakdown.innerHTML="";
+return;
 }
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
+/* REALISTIC VB PRICING */
+let materialRate = 0;
+let laborHours = 0;
+let laborRateLead = 125;
+let laborRateAssist = 80;
+let assistants = 1;
 
-particles.forEach(p=>{
-ctx.fillStyle="gold";
-ctx.fillRect(p.x,p.y,2,2);
+/* CATEGORY LOGIC */
+let category = document.getElementById("category").value;
 
-p.x+=p.dx;
-p.y+=p.dy;
+if(category === "lighting"){
+materialRate = 180; // fixtures
+laborHours = qty * 0.5; // per fixture
+}
+
+if(category === "audio"){
+materialRate = 120;
+laborHours = qty * 0.6;
+}
+
+if(category === "video"){
+materialRate = 75;
+laborHours = 2;
+let mount = document.getElementById("mount")?.value;
+if(mount === "yes"){
+materialRate += 160;
+}
+}
+
+if(category === "network"){
+materialRate = 90;
+laborHours = qty * 0.75;
+}
+
+if(category === "garage"){
+materialRate = 250;
+laborHours = 3;
+}
+
+/* CALCULATIONS */
+let materialCost = qty * materialRate;
+let laborCost = (laborHours * laborRateLead) +
+                (laborHours * laborRateAssist * assistants);
+
+let travel = 50; // average VB cost
+let overhead = 0.30;
+let profit = 0.20;
+
+/* FINAL */
+let subtotal = materialCost + laborCost + travel;
+let total = subtotal * (1 + overhead + profit);
+
+total = Math.round(total);
+
+/* DISPLAY */
+totalDisplay.innerHTML = "$" + total;
+
+breakdown.innerHTML = `
+Materials: $${materialCost}<br>
+Labor: $${Math.round(laborCost)}<br>
+Travel: $${travel}<br>
+Overhead: 30%<br>
+Profit: 20%<br>
+<strong>Total: $${total}</strong>
+`;
+
+/* SAVE TO FIREBASE */
+db.collection("quotes").add({
+category,
+total,
+date:new Date().toLocaleString()
 });
 
-requestAnimationFrame(animate);
+});
+
+/* RESET */
+function resetCalc(){
+document.getElementById("category").value="";
+options.innerHTML="";
+totalDisplay.innerHTML="$0";
+breakdown.innerHTML="";
 }
-animate();
+
+/* PDF DOWNLOAD */
+function downloadPDF(){
+
+let content = breakdown.innerText;
+
+let blob = new Blob([content], {type:"text/plain"});
+let link = document.createElement("a");
+
+link.href = URL.createObjectURL(blob);
+link.download = "TigerTechQuote.txt";
+link.click();
+
+}
+
+/* EMAIL (AUTO SEND SIMPLE FORM) */
+function sendEmailEstimate(){
+
+let value = breakdown.innerText;
+
+fetch("https://formsubmit.co/ajax/YOUR_EMAIL", {
+method:"POST",
+headers:{'Content-Type':'application/json'},
+body: JSON.stringify({
+message:value
+})
+});
+
+}
 
 </script>
 
