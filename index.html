@@ -8,11 +8,7 @@
 
 <title>Tiger Tech Consulting | Smart Home & Lighting Virginia Beach</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
-
-<style>
-
-body {
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel
   margin:0;
   font-family:Inter;
   background:#050505;
@@ -28,16 +24,17 @@ header {
   background:rgba(255,255,255,.05);
 }
 
-<div>
-<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a>
-<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
-</div>
-
 nav a {
   color:white;
   margin-left:20px;
   text-decoration:none;
+}
+
+.social a {
+  margin-left:10px;
+  color:white;
+  text-decoration:none;
+  font-size:14px;
 }
 
 /* HERO */
@@ -89,6 +86,13 @@ input, select {
   border-radius:10px;
 }
 
+/* FOOTER */
+footer {
+  padding:40px;
+  text-align:center;
+  border-top:1px solid #444;
+}
+
 </style>
 
 </head>
@@ -99,6 +103,19 @@ input, select {
 
 <img src="logo.png" height="60">
 
+<nav>
+  <a href="about.html">About</a>
+  <a href="residential.html">Residential</a>
+  <a href="commercial.html">Commercial</a>
+  <a href="blog.html">Blog</a>
+</nav>
+
+<div class="social">
+<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a>
+<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a>
+<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
+</div>
+
 <div>
   <input id="email" placeholder="Email">
   <input id="password" type="password" placeholder="Password">
@@ -106,13 +123,6 @@ input, select {
   <button onclick="login()">Login</button>
   <button onclick="logout()">Logout</button>
 </div>
-
-<nav>
-  <a href="about.html">About</a>
-  <a href="residential.html">Residential</a>
-  <a href="commercial.html">Commercial</a>
-  <a href="blog.html">Blog</a>
-</nav>
 
 </header>
 
@@ -145,30 +155,37 @@ input, select {
 </div>
 </section>
 
-<!-- USER HISTORY -->
 <h2 style="text-align:center;">Your Quote History</h2>
 <div id="history"></div>
 
-<!-- GOOGLE REVIEWS -->
 <section style="padding:60px; text-align:center;">
 <h2 style="font-family:Cinzel;">Customer Reviews</h2>
 
 <iframe src="https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed"
 width="100%" height="300" style="border:0;"></iframe>
+
 </section>
 
-<!-- ADMIN -->
 <h2 style="text-align:center;">Admin Dashboard</h2>
 <div id="admin" class="admin"></div>
 
-<!-- ✅ FIREBASE SCRIPTS -->
+<footer>
+<p>Follow Tiger Tech Consulting</p>
+
+<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a> |
+<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a> |
+<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
+
+<p style="margin-top:20px;">© 2026 Tiger Tech Consulting</p>
+</footer>
+
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
 <script>
 
-// ✅ CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyCNJ8ryHB9x3iCQPi3lG4-m-RBqEiuWWmQ",
   authDomain: "tiger-tech-consulting.firebaseapp.com",
@@ -182,7 +199,6 @@ const db = firebase.firestore();
 
 let currentUser = null;
 
-// ✅ AUTH
 function signup(){
   auth.createUserWithEmailAndPassword(email.value, password.value)
   .then(()=>alert("Account created!"));
@@ -197,7 +213,6 @@ function logout(){
   auth.signOut();
 }
 
-// ✅ USER TRACKING
 auth.onAuthStateChanged(user => {
   currentUser = user;
   if(user){
@@ -206,12 +221,10 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-// ✅ BOOK
 function book(){
   window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
 }
 
-// ✅ DOWNLOAD
 function download(){
   let text = breakdown.innerText;
   let blob = new Blob([text], {type:"text/plain"});
@@ -221,12 +234,10 @@ function download(){
   a.click();
 }
 
-// ✅ ELEMENTS
 const options = document.getElementById("options");
 const totalDisplay = document.getElementById("total");
 const breakdown = document.getElementById("breakdown");
 
-// ✅ CATEGORY SWITCH
 document.getElementById("category").addEventListener("change", function(){
 
   options.innerHTML = "";
@@ -249,7 +260,6 @@ document.getElementById("category").addEventListener("change", function(){
 
 });
 
-// ✅ CALCULATE
 document.addEventListener("input", function(){
 
   let qty = parseInt(document.getElementById("qty")?.value || 0);
@@ -276,7 +286,6 @@ document.addEventListener("input", function(){
 
 });
 
-// ✅ USER HISTORY
 function loadHistory(uid){
   db.collection("quotes").where("uid","==",uid).get()
   .then(snapshot=>{
@@ -289,7 +298,6 @@ function loadHistory(uid){
   });
 }
 
-// ✅ ADMIN
 function loadAdmin(){
   db.collection("quotes").get().then(snapshot=>{
     let html = "<h3>All Quotes</h3>";
@@ -310,19 +318,17 @@ function loadAdmin(){
   });
 }
 
-// ✅ DELETE
 function deleteQuote(id){
   db.collection("quotes").doc(id).delete().then(loadAdmin);
 }
 
-// ✅ EDIT
 function editQuote(id, value){
   let newVal = prompt("Edit Amount:", value);
   if(newVal){
     db.collection("quotes").doc(id).update({ total: parseInt(newVal) }).then(loadAdmin);
   }
 }
- 
+
 </script>
 
 </body>
