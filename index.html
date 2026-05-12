@@ -8,137 +8,54 @@
 
 <title>Tiger Tech Consulting</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
-/* GLOBAL */
 body {
   margin:0;
-  font-family:'Inter',sans-serif;
-  color:white;
+  font-family:Inter;
   background: radial-gradient(circle at top, #2a0f4d, #050505);
-  overflow-x:hidden;
-}
-
-/* HEADER */
-.header {
-  position:sticky;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 30px;
-  backdrop-filter:blur(12px);
-  background:rgba(0,0,0,0.6);
-  z-index:100;
-}
-
-/* LOGO */
-.logo img {height:75px;}
-
-/* NAV */
-.nav a {
-  margin:0 10px;
   color:white;
-  text-decoration:none;
-  position:relative;
 }
-
-.nav a::after {
-  content:"";
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:gold;
-  transition:.3s;
-}
-.nav a:hover::after {width:100%;}
-
-/* SOCIAL */
-.social a {
-  font-size:24px;
-  margin:0 8px;
-  text-decoration:none;
-}
-.social a:hover {transform:translateY(-3px);}
 
 /* HERO */
 .hero {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   text-align:center;
+  padding:80px 20px;
 }
 
 .hero h1 {
-  font-family:'Cinzel';
-  font-size:70px;
-  background:linear-gradient(90deg,white,gold);
-  -webkit-background-clip:text;
-  color:transparent;
-  animation:fadeUp 1.2s;
-}
-
-.hero p {
-  font-size:20px;
-  opacity:0.8;
-}
-
-/* BUTTON */
-.btn {
-  margin-top:20px;
-  padding:14px 30px;
-  background:linear-gradient(90deg,gold,#fff);
-  border-radius:30px;
-  color:black;
-  font-weight:bold;
+  font-family:Cinzel;
+  font-size:48px;
 }
 
 /* ESTIMATOR */
 .calc-box {
-  background:rgba(122,63,255,.25);
+  background:#111;
   border:2px solid #7A3FFF;
-  box-shadow:0 0 25px #7A3FFF;
-  padding:30px;
-  border-radius:15px;
-  max-width:600px;
+  padding:25px;
+  border-radius:10px;
+  max-width:500px;
   margin:auto;
 }
 
 input, select {
   width:100%;
   padding:10px;
-  margin:10px 0;
+  margin-top:10px;
 }
 
 #total {
-  font-size:32px;
+  font-size:28px;
   color:gold;
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1;}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .header {flex-direction:column;}
-  .hero h1{font-size:40px;}
-  .calc-box{width:90%;}
-}
-
-canvas {
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:-1;
+button {
+  padding:10px;
+  margin-top:10px;
+  width:100%;
+  cursor:pointer;
 }
 
 </style>
@@ -147,37 +64,10 @@ canvas {
 
 <body>
 
-<canvas id="canvas"></canvas>
-
-<header class="header">
-
-<div class="logo">
-<img src="logo.png">
-</div>
-
-<nav class="nav">
-<a href="about.html">About</a>
-<a href="residential.html">Residential</a>
-<a href="commercial.html">Commercial</a>
-<a href="blog.html">Blog</a>
-</nav>
-
-<div class="social">
-<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">🔵</a>
-<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">📸</a>
-<a href="https://www.tiktok.com/@lane.smith501" target="_blank">🎵</a>
-</div>
-
-</header>
-
 <section class="hero">
 <h1>Tiger Tech Consulting</h1>
-<p>Smart Homes • Lighting • IT Solutions</p>
+<p>Project Estimator</p>
 </section>
-
-<section>
-
-<h2 style="text-align:center">Project Estimator</h2>
 
 <div class="calc-box">
 
@@ -187,90 +77,126 @@ canvas {
 <option value="audio">Audio</option>
 <option value="video">Video</option>
 <option value="network">Networking</option>
-<option value="garage">Garage</option>
+<option value="garage">Garage Door</option>
 </select>
 
 <div id="options"></div>
 
-<h3 id="total">$0</h3>
+<h2 id="total">$0</h2>
 <div id="breakdown"></div>
 
 <button onclick="resetCalc()">Reset</button>
 
 </div>
 
-</section>
-
-<section style="text-align:center;padding:40px;">
-https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed>
-</section>
-
-<!-- FIREBASE -->
-https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js>
-https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js>
-
 <script>
 
-/* FIREBASE */
-firebase.initializeApp({
-apiKey:"AIzaSyCNJ8ryHB9x3iCQPi3lG4-m-RBqEiuWWmQ",
-projectId:"tiger-tech-consulting"
-});
-
-const db = firebase.firestore();
-
-/* ELEMENTS */
+/* MAIN ELEMENTS */
+const category = document.getElementById("category");
 const options = document.getElementById("options");
 const totalDisplay = document.getElementById("total");
 const breakdown = document.getElementById("breakdown");
 
-/* CATEGORY */
-document.getElementById("category").onchange = function(){
-options.innerHTML = `<input id="qty" placeholder="Enter quantity">`;
+/* CATEGORY CHANGE */
+category.addEventListener("change", function(){
+
+options.innerHTML = "";
+
+if(this.value === ""){
 totalDisplay.innerHTML="$0";
-breakdown.innerHTML="";
-};
+return;
+}
 
-/* CALCULATE */
-document.addEventListener("input", calculate);
-document.addEventListener("change", calculate);
+/* ALWAYS CREATE INPUT */
+options.innerHTML = `
+<label>Enter Quantity</label>
+<input type="number" id="qty" min="1" placeholder="Enter number">
+`;
 
+});
+
+/* ✅ GLOBAL CALCULATION FUNCTION */
 function calculate(){
 
-let qty = parseInt(document.getElementById("qty")?.value);
+let qtyField = document.getElementById("qty");
 
-if(!qty || qty<=0){
+if(!qtyField){
+totalDisplay.innerHTML = "$0";
+breakdown.innerHTML = "";
+return;
+}
+
+let qty = parseInt(qtyField.value);
+
+if(!qty || qty <= 0){
 totalDisplay.innerHTML="$0";
 breakdown.innerHTML="";
 return;
 }
 
-/* SMART LABOR MODEL */
-let laborHours = qty * 0.6 + 2;
-let labor = (laborHours * 125) + (laborHours * 80);
+/* SERVICE TYPE */
+let type = category.value;
 
-/* VB PRICING */
-let material = qty * 150;
+/* PRICING */
+let materialRate = 150;
+let laborHours = 4;
+
+/* LOGIC PER SERVICE */
+if(type === "lighting"){
+materialRate = 180;
+laborHours = qty * 0.5 + 1;
+}
+
+if(type === "audio"){
+materialRate = 120;
+laborHours = qty * 0.6 + 1.5;
+}
+
+if(type === "video"){
+materialRate = 100;
+laborHours = 2;
+}
+
+if(type === "network"){
+materialRate = 90;
+laborHours = qty * 0.75 + 1;
+}
+
+if(type === "garage"){
+materialRate = 250;
+laborHours = 3;
+}
+
+/* LABOR */
+let lead = 125;
+let assist = 80;
+let labor = (laborHours * lead) + (laborHours * assist);
+
+/* OTHER COSTS */
 let travel = 50;
 let overhead = 0.30;
 let profit = 0.20;
 
-let total = Math.round((material + labor + travel) * (1 + overhead + profit));
+/* FINAL */
+let subtotal = (qty * materialRate) + labor + travel;
+let total = Math.round(subtotal * (1 + overhead + profit));
 
+/* DISPLAY */
 totalDisplay.innerHTML = "$" + total;
 
 breakdown.innerHTML = `
-Materials: $${material}<br>
+Materials: $${qty * materialRate}<br>
 Labor: $${Math.round(labor)}<br>
 Travel: $${travel}<br>
-Total: $${total}
+Overhead: 30%<br>
+Profit: 20%<br>
+<strong>Total: $${total}</strong>
 `;
 
-db.collection("quotes").add({
-total,
-date:new Date().toLocaleString()
-});
 }
+
+/* ✅ LISTEN TO INPUT PROPERLY */
+document.addEventListener("input", calculate);
 
 /* RESET */
 function resetCalc(){
@@ -279,51 +205,6 @@ options.innerHTML="";
 totalDisplay.innerHTML="$0";
 breakdown.innerHTML="";
 }
-
-/* PARTICLES */
-const canvas=document.getElementById("canvas");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-let count=window.innerWidth<768?50:100;
-
-for(let i=0;i<count;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
-});
-}
-
-window.addEventListener("mousemove",e=>{
-particles.forEach(p=>{
-let dx=p.x-e.clientX;
-let dy=p.y-e.clientY;
-let dist=Math.sqrt(dx*dx+dy*dy);
-if(dist<120){
-p.x+=dx/30;
-p.y+=dy/30;
-}
-});
-});
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-ctx.fillStyle="gold";
-ctx.fillRect(p.x,p.y,2,2);
-p.x+=p.dx;
-p.y+=p.dy;
-});
-
-requestAnimationFrame(animate);
-}
-animate();
 
 </script>
 
