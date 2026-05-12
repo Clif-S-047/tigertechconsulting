@@ -1,296 +1,161 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
+OCTYPE html>
+<html>
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tiger Tech Consulting</title>
 
-<meta name="description" content="Smart home, LED lighting, IT consulting and home theater solutions in Virginia Beach.">
-
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
-:root {
-  --gold: #FFD700;
-  --black: #050505;
-}
+body { margin:0; font-family:Inter; background:#050505; color:white; }
 
-/* GLOBAL */
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--black);
-  color: white;
-}
-
-/* NAVBAR */
 header {
-  position: fixed;
-  width: 92%;
-  margin: 10px 4%;
-  padding: 12px 25px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  z-index: 100;
+display:flex; justify-content:space-between; padding:20px;
+background:rgba(255,255,255,.05);
 }
 
-.logo img {
-  height: 60px;
-}
+nav a { color:white; margin-left:20px; text-decoration:none; }
 
-nav a {
-  color: white;
-  margin-left: 25px;
-  text-decoration: none;
-}
-
-nav a:hover {
-  color: var(--gold);
-}
-
-/* HERO */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+height:80vh; display:flex; flex-direction:column;
+justify-content:center; align-items:center; text-align:center;
 }
 
 .hero h1 {
-  font-family: 'Cinzel', serif;
-  font-size: 70px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  background: linear-gradient(90deg, white, var(--gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+font-family:Cinzel; font-size:70px;
+background:linear-gradient(90deg,white,gold);
+-webkit-background-clip:text; color:transparent;
 }
 
-.hero p {
-  font-size: 22px;
-  margin-bottom: 30px;
-}
-
-/* BUTTON */
 .btn {
-  padding: 14px 30px;
-  background: linear-gradient(90deg, var(--gold), white);
-  color: black;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
+background:gold; padding:12px 25px;
+color:black; text-decoration:none;
 }
 
-.btn:hover {
-  box-shadow: 0 0 20px var(--gold);
+.calc-box {
+background:rgba(122,63,255,.2);
+border:2px solid #7A3FFF;
+box-shadow:0 0 25px #7A3FFF;
+padding:30px;
+max-width:600px;
+margin:auto;
 }
 
-/* SERVICES */
-.services {
-  padding: 100px 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-}
-
-.card {
-  background: rgba(255,255,255,0.05);
-  padding: 30px;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 0 25px rgba(255,215,0,0.3);
-}
-
-.card h3 {
-  font-family: 'Cinzel';
-  font-size: 26px;
-}
-
-/* CALCULATOR */
-.calculator {
-  text-align: center;
-  padding: 80px 20px;
-}
-
-.result {
-  font-size: 30px;
-  color: var(--gold);
-}
-
-/* CONTACT */
-#contact {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-input, textarea {
-  width: 100%;
-  max-width: 400px;
-  padding: 10px;
-  margin: 10px auto;
-  display: block;
-}
-
-/* CHATBOT */
-#chatbot {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #111;
-  padding: 10px;
-  border-radius: 10px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-}
+input, select { width:100%; padding:8px; margin:10px 0; }
 
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header>
-  <div class="logo">
-    <img src="logo.png">
-  </div>
+<img src="logo.png" height="60">
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="about.html">About</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="blog.html">Blog</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<nav>
+<a href="about.html">About</a>
+<a href="residential.html">Residential</a>
+<a href="commercial.html">Commercial</a>
+<a href="blog.html">Blog</a>
+</nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-
-<canvas id="particles"></canvas>
-
-<h1 id="typing"></h1>
-<p>Smart Homes • IT Solutions • Custom Lighting</p>
-
-<a href="#contact" class="btn">Free Consultation</a>
-
+<h1>Tiger Tech Consulting</h1>
+<p>Smart Homes • IT • Lighting</p>
+<a href="#quote" class="btn">Get Quote</a>
 </section>
 
-<!-- SERVICES -->
-<section class="services">
+<section id="quote">
+<h2 style="text-align:center">Build Your Quote</h2>
 
-<div class="card">
-<h3>IT Consulting</h3>
-<p>Advanced business technology solutions.</p>
+<div class="calc-box">
+
+<select id="category">
+<option value="">Select Service</option>
+<option value="lighting">Lighting</option>
+<option value="audio">Audio</option>
+<option value="video">Video</option>
+<option value="network">Networking</option>
+<option value="camera">Ring / Nest Cameras</option>
+</select>
+
+<div id="options"></div>
+
+<h3 id="total">$0</h3>
+<div id="breakdown"></div>
+
+<button onclick="download()">Download Quote</button>
+<button onclick="book()">Book Now</button>
+
 </div>
-
-<div class="card">
-<h3>Smart Home Integration</h3>
-<p>Full automation and control systems.</p>
-</div>
-
-<div class="card">
-<h3>Custom LED Lighting</h3>
-<p>Landscape, hardscape & roofline lighting.</p>
-</div>
-
-<div class="card">
-<h3>Home Theater</h3>
-<p>Premium audio and video installations.</p>
-</div>
-
 </section>
-
-<!-- CALCULATOR -->
-<section class="calculator">
-<h2>Project Estimate</h2>
-
-<input id="devices" type="number" placeholder="Devices">
-<input id="rooms" type="number" placeholder="Rooms">
-
-<div class="result" id="result">$0</div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact Us</h2>
-
-<form action="https://formspree.io/f/xqennkdp" method="POST">
-  <input type="text" name="name" placeholder="Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" placeholder="Message"></textarea>
-  <button class="btn" type="submit">Send</button>
-</form>
-
-<br>
-
-<iframe src="https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation"
-width="100%" height="500"></iframe>
-
-</section>
-
-<footer>
-© 2026 Tiger Tech Consulting
-</footer>
-
-<!-- CHATBOT -->
-<div id="chatbot">
-<input id="chatInput" placeholder="Ask...">
-<button onclick="chat()">Send</button>
-<div id="chatOutput"></div>
-</div>
 
 <script>
 
-// TYPING
-let text = "Tiger Tech Consulting";
-let i = 0;
-function typing() {
-  if(i < text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing, 60);
-  }
+function book(){
+window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
 }
-typing();
 
-// CALCULATOR
-document.querySelectorAll('input').forEach(input=>{
-  input.addEventListener('input', ()=>{
-    let d = document.getElementById("devices").value || 0;
-    let r = document.getElementById("rooms").value || 0;
-    document.getElementById("result").innerHTML = "$" + (d*200 + r*400);
-  });
+function download(){
+let text = document.getElementById("breakdown").innerText;
+let blob = new Blob([text], {type:"text/plain"});
+let a = document.createElement("a");
+a.href = URL.createObjectURL(blob);
+a.download = "quote.txt";
+a.click();
+}
+
+const options = document.getElementById("options");
+const totalDisplay = document.getElementById("total");
+
+document.getElementById("category").onchange = function(){
+let v=this.value;
+options.innerHTML="";
+
+if(v==="lighting"){
+options.innerHTML=`
+<select id="type">
+<option value="">Indoor/Outdoor</option>
+<option value="indoor">Indoor</option>
+<option value="outdoor">Outdoor</option>
+</select>
+<input id="qty" placeholder="Units">
+`;
+}
+
+if(v==="audio"){
+options.innerHTML=`<input id="qty" placeholder="Speakers">`;
+}
+
+if(v==="video"){
+options.innerHTML=`
+<select id="mount">
+<option value="yes">Wall Mount Included</option>
+<option value="no">Call for Quote</option>
+</select>`;
+}
+
+};
+
+document.addEventListener("input",()=>{
+let qty = document.getElementById("qty")?.value||0;
+let total = qty*150;
+let labor = 125*4;
+let overhead = 1.3;
+
+let final = (total+labor)*overhead;
+
+totalDisplay.innerHTML="$"+Math.round(final);
+
+document.getElementById("breakdown").innerHTML=
+`Materials: $${total}<br>
+Labor: $${labor}<br>
+Total: $${Math.round(final)}`;
 });
-
-// CHATBOT
-function chat(){
-  let input = document.getElementById("chatInput").value.toLowerCase();
-  let output = "Ask about pricing or booking.";
-
-  if(input.includes("book")){
-    window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
-  }
-
-  document.getElementById("chatOutput").innerHTML = output;
-}
 
 </script>
 
