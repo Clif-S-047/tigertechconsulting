@@ -8,89 +8,157 @@
 
 <title>Tiger Tech Consulting | Smart Home & Lighting Virginia Beach</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* GLOBAL */
+body {
   margin:0;
   font-family:Inter;
-  background:#050505;
   color:white;
+  background: radial-gradient(circle at top, #2a0f4d, #050505);
+  overflow-x:hidden;
 }
 
-/* NAV */
-header {
+/* HEADER */
+.header {
+  position:sticky;
+  top:0;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px;
-  background:rgba(255,255,255,.05);
+  padding:20px 40px;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.6);
+  z-index:100;
 }
 
-nav a {
+.nav a {
+  margin:0 15px;
   color:white;
-  margin-left:20px;
   text-decoration:none;
+  position:relative;
+}
+
+.nav a::after {
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:gold;
+  transition:.3s;
+}
+.nav a:hover::after {
+  width:100%;
 }
 
 .social a {
-  margin-left:10px;
-  color:white;
-  text-decoration:none;
-  font-size:14px;
+  margin:0 6px;
+  font-size:18px;
+  transition:0.3s;
+}
+.social a:hover {
+  transform:translateY(-3px);
+  text-shadow:0 0 15px gold;
+}
+
+.auth input {
+  width:120px;
+  margin:0 5px;
+  padding:5px;
+  border-radius:5px;
 }
 
 /* HERO */
 .hero {
-  height:80vh;
+  height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
+  position:relative;
 }
 
 .hero h1 {
   font-family:Cinzel;
-  font-size:70px;
-  background:linear-gradient(90deg,white,gold);
+  font-size:80px;
+  background:linear-gradient(90deg, white, gold);
   -webkit-background-clip:text;
   color:transparent;
+  animation:fadeIn 1.5s;
 }
 
+.hero p {
+  font-size:22px;
+  opacity:0.85;
+}
+
+/* BUTTON */
 .btn {
-  background:gold;
-  padding:12px 25px;
+  margin-top:20px;
+  padding:14px 30px;
+  background:linear-gradient(90deg, gold, #fff);
+  border-radius:30px;
   color:black;
+  font-weight:bold;
   text-decoration:none;
+  transition:0.3s;
+}
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 0 25px gold;
+}
+
+/* PARTICLES */
+canvas {
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:-1;
 }
 
 /* QUOTE BOX */
 .calc-box {
-  background:rgba(122,63,255,.2);
+  background:rgba(122,63,255,.25);
   border:2px solid #7A3FFF;
-  box-shadow:0 0 25px #7A3FFF;
+  box-shadow:0 0 30px #7A3FFF;
   padding:30px;
   max-width:600px;
   margin:auto;
+  border-radius:15px;
 }
 
 input, select {
   width:100%;
   padding:10px;
   margin:10px 0;
+  border-radius:5px;
 }
 
-/* ADMIN */
-.admin {
-  background:#111;
-  margin:40px;
-  padding:20px;
-  border-radius:10px;
+#total {
+  font-size:30px;
+  color:gold;
 }
 
-/* FOOTER */
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from {opacity:0; transform:translateY(20px);}
+  to {opacity:1;}
+}
+
 footer {
   padding:40px;
   text-align:center;
-  border-top:1px solid #444;
+}
+
+.admin {
+  background:#111;
+  padding:20px;
+  margin:40px;
 }
 
 </style>
@@ -99,11 +167,13 @@ footer {
 
 <body>
 
-<header>
+<canvas id="particles"></canvas>
 
-<img src="logo.png" height="60">
+<header class="header">
 
-<nav>
+<img src="logo.png" height="50">
+
+<nav class="nav">
   <a href="about.html">About</a>
   <a href="residential.html">Residential</a>
   <a href="commercial.html">Commercial</a>
@@ -111,28 +181,30 @@ footer {
 </nav>
 
 <div class="social">
-<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a>
-<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a>
-<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
+  <a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">🔵</a>
+  <a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">📸</a>
+  <a href="https://www.tiktok.com/@lane.smith501" target="_blank">🎵</a>
 </div>
 
-<div>
+<div class="auth">
   <input id="email" placeholder="Email">
   <input id="password" type="password" placeholder="Password">
   <button onclick="signup()">Sign Up</button>
   <button onclick="login()">Login</button>
-  <button onclick="logout()">Logout</button>
 </div>
 
 </header>
 
 <section class="hero">
-  <h1>Tiger Tech Consulting</h1>
-  <p>Smart Homes • IT • Lighting</p>
-  <a href="#quote" class="btn">Get Quote</a>
+
+<h1>Tiger Tech Consulting</h1>
+<p>Smart Homes • Lighting • IT Solutions</p>
+<a href="#quote" class="btn">Get Quote</a>
+
 </section>
 
 <section id="quote">
+
 <h2 style="text-align:center">Build Your Quote</h2>
 
 <div class="calc-box">
@@ -153,16 +225,17 @@ footer {
 <button onclick="book()">Book Now</button>
 
 </div>
+
 </section>
 
-<h2 style="text-align:center;">Your Quote History</h2>
+<h2 style="text-align:center;">Quote History</h2>
 <div id="history"></div>
 
 <section style="padding:60px; text-align:center;">
-<h2 style="font-family:Cinzel;">Customer Reviews</h2>
+<h2>Customer Reviews</h2>
 
 <iframe src="https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed"
-width="100%" height="300" style="border:0;"></iframe>
+width="100%" height="300"></iframe>
 
 </section>
 
@@ -170,13 +243,15 @@ width="100%" height="300" style="border:0;"></iframe>
 <div id="admin" class="admin"></div>
 
 <footer>
-<p>Follow Tiger Tech Consulting</p>
+
+<p>Follow Us</p>
 
 <a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a> |
 <a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a> |
 <a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
 
-<p style="margin-top:20px;">© 2026 Tiger Tech Consulting</p>
+<p>© 2026 Tiger Tech Consulting</p>
+
 </footer>
 
 <!-- FIREBASE -->
@@ -186,148 +261,100 @@ width="100%" height="300" style="border:0;"></iframe>
 
 <script>
 
-const firebaseConfig = {
+// FIREBASE CONFIG
+firebase.initializeApp({
   apiKey: "AIzaSyCNJ8ryHB9x3iCQPi3lG4-m-RBqEiuWWmQ",
   authDomain: "tiger-tech-consulting.firebaseapp.com",
   projectId: "tiger-tech-consulting"
-};
-
-firebase.initializeApp(firebaseConfig);
+});
 
 const auth = firebase.auth();
 const db = firebase.firestore();
-
 let currentUser = null;
 
 function signup(){
-  auth.createUserWithEmailAndPassword(email.value, password.value)
-  .then(()=>alert("Account created!"));
+  auth.createUserWithEmailAndPassword(email.value,password.value);
 }
 
 function login(){
-  auth.signInWithEmailAndPassword(email.value, password.value)
-  .then(()=>alert("Logged in!"));
+  auth.signInWithEmailAndPassword(email.value,password.value);
 }
-
-function logout(){
-  auth.signOut();
-}
-
-auth.onAuthStateChanged(user => {
-  currentUser = user;
-  if(user){
-    loadHistory(user.uid);
-    loadAdmin();
-  }
-});
 
 function book(){
   window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
-}
-
-function download(){
-  let text = breakdown.innerText;
-  let blob = new Blob([text], {type:"text/plain"});
-  let a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "quote.txt";
-  a.click();
 }
 
 const options = document.getElementById("options");
 const totalDisplay = document.getElementById("total");
 const breakdown = document.getElementById("breakdown");
 
-document.getElementById("category").addEventListener("change", function(){
-
-  options.innerHTML = "";
-
-  if(this.value === "lighting"){
-    options.innerHTML = `<input id="qty" placeholder="Number of Lights">`;
+document.getElementById("category").onchange = function(){
+  if(this.value==="lighting"){
+    options.innerHTML=`<input id="qty" placeholder="Units">`;
   }
+};
 
-  if(this.value === "audio"){
-    options.innerHTML = `<input id="qty" placeholder="Number of Speakers">`;
-  }
+document.addEventListener("input",()=>{
 
-  if(this.value === "video"){
-    options.innerHTML = `
-      <select id="mount">
-        <option value="yes">Wall Mount Included</option>
-        <option value="no">Call for Quote</option>
-      </select>`;
-  }
+  let qty = document.getElementById("qty")?.value||0;
 
-});
+  let total = Math.round((qty*150+125*4)*1.3);
 
-document.addEventListener("input", function(){
+  totalDisplay.innerHTML="$"+total;
 
-  let qty = parseInt(document.getElementById("qty")?.value || 0);
-
-  let materials = qty * 150;
-  let labor = 125 * 4;
-  let total = Math.round((materials + labor) * 1.3);
-
-  totalDisplay.innerHTML = "$" + total;
-
-  breakdown.innerHTML = `
-  Materials: $${materials}<br>
-  Labor: $${labor}<br>
-  Total: $${total}
-  `;
+  breakdown.innerHTML = `Total: $${total}`;
 
   if(currentUser){
     db.collection("quotes").add({
-      uid: currentUser.uid,
-      total: total,
-      date: new Date().toLocaleString()
+      uid:currentUser.uid,
+      total:total
     });
   }
 
 });
 
-function loadHistory(uid){
-  db.collection("quotes").where("uid","==",uid).get()
-  .then(snapshot=>{
-    let html="";
-    snapshot.forEach(doc=>{
-      let d = doc.data();
-      html += `<p>$${d.total} — ${d.date}</p>`;
-    });
-    history.innerHTML = html;
-  });
+/* PARTICLE SYSTEM */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+dx:(Math.random()-0.5),
+dy:(Math.random()-0.5)
+});
 }
 
-function loadAdmin(){
-  db.collection("quotes").get().then(snapshot=>{
-    let html = "<h3>All Quotes</h3>";
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    snapshot.forEach(doc=>{
-      let d = doc.data();
-      html += `
-        <div>
-          <p><b>$${d.total}</b></p>
-          <p>${d.date}</p>
-          <button onclick="editQuote('${doc.id}',${d.total})">Edit</button>
-          <button onclick="deleteQuote('${doc.id}')">Delete</button>
-        </div>
-      `;
-    });
+particles.forEach(p=>{
+ctx.fillStyle="gold";
+ctx.fillRect(p.x,p.y,3,3);
 
-    admin.innerHTML = html;
-  });
+p.x+=p.dx;
+p.y+=p.dy;
+
+particles.forEach(p2=>{
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
+if(dist<100){
+ctx.strokeStyle="rgba(255,215,0,0.1)";
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p2.x,p2.y);
+ctx.stroke();
 }
+});
+});
 
-function deleteQuote(id){
-  db.collection("quotes").doc(id).delete().then(loadAdmin);
+requestAnimationFrame(animate);
 }
-
-function editQuote(id, value){
-  let newVal = prompt("Edit Amount:", value);
-  if(newVal){
-    db.collection("quotes").doc(id).update({ total: parseInt(newVal) }).then(loadAdmin);
-  }
-}
+animate();
 
 </script>
 
