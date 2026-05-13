@@ -1,37 +1,218 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>About</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Inter&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Tiger Tech Consulting | Smart Home & IT Experts</title>
+
+<meta name="description" content="Learn about Tiger Tech Consulting—your trusted smart home, lighting, and IT solutions provider serving Virginia Beach, Chesapeake, and Norfolk.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
-body{background:#050505;color:white;font-family:Inter;padding:40px}
-h1{font-family:Cinzel}
+
+/* GLOBAL */
+body {
+  margin:0;
+  font-family:'Inter', sans-serif;
+  color:white;
+  background: radial-gradient(circle at top, #2a0f4d, #050505);
+}
+
+/* HEADER */
+.header {
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+}
+
+.logo {
+  font-family:'Cinzel';
+  font-size:20px;
+}
+
+/* NAV */
+.nav a {
+  margin:0 12px;
+  color:white;
+  text-decoration:none;
+  position:relative;
+}
+
+.nav a::after {
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:gold;
+  transition:0.3s;
+}
+
+.nav a:hover::after {
+  width:100%;
+}
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:100px 20px;
+}
+
+.hero h1 {
+  font-family:'Cinzel';
+  font-size:55px;
+  background:linear-gradient(90deg,white,gold);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* CONTENT */
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:40px 20px;
+  line-height:1.7;
+}
+
+h2 {
+  font-family:'Cinzel';
+  margin-top:40px;
+}
+
+/* CTA */
+.cta {
+  margin-top:50px;
+  padding:30px;
+  border:2px solid gold;
+  text-align:center;
+  border-radius:10px;
+}
+
+/* SOCIAL */
+.social {
+  text-align:center;
+  margin-top:20px;
+}
+
+.social a {
+  margin:0 10px;
+  font-size:22px;
+  color:white;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+}
+
 </style>
 </head>
+
 <body>
 
+<header class="header">
+
+<div class="logo">Tiger Tech Consulting</div>
+
+<nav class="nav">
+<a href="index.html">Home</a>
+<a href="residential.html">Residential</a>
+<a href="commercial.html">Commercial</a>
+<a href="blog.html">Blog</a>
+</nav>
+
+</header>
+
+<section class="hero">
 <h1>About Tiger Tech Consulting</h1>
+<p>Technology Made Simple, Reliable, and Built Around You</p>
+</section>
+
+<div class="container">
 
 <p>
-At Tiger Tech Consulting, we believe technology should work for you—seamlessly, reliably, and without frustration...
+At Tiger Tech Consulting, we believe technology should work for you—seamlessly, reliably, and without frustration. Founded on a commitment to excellence and service, we provide high-quality audio/visual, home automation, networking, and IT solutions for residential and commercial clients alike.
 </p>
 
 <p>
-Founded on a commitment to excellence and service, we provide high-quality audio/visual, home automation, networking, and IT solutions...
+Our leadership brings together a unique blend of expertise, discipline, and diverse perspective. One of our co-founders is a proud graduate of Tulane University in New Orleans and is a female minority entrepreneur who adds innovation, creativity, and a client-first approach to everything we do.
 </p>
 
 <p>
-One co-founder is a Tulane graduate and female minority entrepreneur providing innovation and creativity...
+Our other co-founder, a graduate of Louisiana State University in Baton Rouge and a veteran of the United States Marine Corps, brings a mission-focused mindset, attention to detail, and unwavering dedication to every project.
+</p>
+
+<h2>Our Approach</h2>
+
+<p>
+Together, we’ve built Tiger Tech Consulting on the principles of integrity, precision, and personalized service. We take the time to understand your needs and design solutions that integrate seamlessly into your lifestyle or business operations.
+</p>
+
+<h2>What We Do</h2>
+
+<p>
+We specialize in designing and delivering customized technology solutions—from immersive audio/visual systems and smart home automation to secure, high-performance networks and dependable IT support.
 </p>
 
 <p>
-The other co-founder, LSU graduate and US Marine Corps veteran, brings discipline and precision...
+Whether it’s a residential upgrade or a full-scale business deployment, we deliver systems that are built to last and designed for performance.
+</p>
+
+<h2>Why Choose Tiger Tech</h2>
+
+<p>
+What sets us apart is not just technical expertise, but our commitment to doing things the right way. We combine cutting-edge technology with old-school service, ensuring clear communication, reliable support, and results you can depend on.
 </p>
 
 <p>
-Together, we deliver customized solutions built to last.
+We proudly serve Virginia Beach, Chesapeake, Norfolk, and surrounding areas, delivering premium solutions tailored to each client's needs.
 </p>
+
+<h2>Your Technology Partner</h2>
+
+<p>
+At Tiger Tech Consulting, we’re more than a service provider—we’re your trusted technology partner. Let us simplify your technology so you can focus on what matters most.
+</p>
+
+<!-- CTA -->
+<div class="cta">
+
+<h2>Ready to Upgrade Your Home or Business?</h2>
+
+<p>Get a real-time estimate or book a consultation today.</p>
+
+<a href="index.html#estimate" style="color:black;background:gold;padding:12px 20px;border-radius:5px;text-decoration:none;">Get Estimate</a>
+
+<br><br>
+
+<a href="https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation" target="_blank" style="color:black;background:gold;padding:12px 20px;border-radius:5px;text-decoration:none;">
+Book Consultation
+</a>
+
+</div>
+
+</div>
+
+<!-- SOCIAL -->
+<div class="social">
+<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">🔵</a>
+<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">📸</a>
+<a href="https://www.tiktok.com/@lane.smith501" target="_blank">🎵</a>
+</div>
+
+<footer style="text-align:center; padding:30px;">
+© 2026 Tiger Tech Consulting
+</footer>
 
 </body>
 </html>
