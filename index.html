@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,179 +6,138 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting | Smart Home Automation Virginia Beach</title>
+<title>Tiger Tech Consulting | Smart Home Automation & Lighting</title>
 
-<meta name="description" content="Smart home automation, LED lighting, and home theater installation in Virginia Beach, Chesapeake, Norfolk and surrounding areas.">
+<meta name="description" content="Smart home automation, LED lighting, and home theater installation in Virginia Beach, Chesapeake, and Norfolk.">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
 /* GLOBAL */
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-color:white;
-background: radial-gradient(circle at top,#2a0f4d,#050505);
-overflow-x:hidden;
+body {
+  margin:0;
+  font-family:Inter;
+  background: radial-gradient(circle at top, #2a0f4d, #050505);
+  color:white;
 }
 
 /* HEADER */
-.header{
-position:sticky;
-top:0;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:100;
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:rgba(0,0,0,0.6);
+  position:sticky;
+  top:0;
 }
 
-.logo{font-size:22px;font-weight:bold;}
-
-.nav a{
-margin:0 12px;
-color:white;
-text-decoration:none;
-}
-
-.social a{
-font-size:22px;
-margin:0 8px;
-color:white;
+/* NAV */
+.nav a {
+  margin:0 10px;
+  color:white;
+  text-decoration:none;
 }
 
 /* HERO */
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
+.hero {
+  text-align:center;
+  padding:100px 20px;
 }
 
-.hero h1{
-font-family:'Cinzel';
-font-size:65px;
-background:linear-gradient(90deg,white,gold);
--webkit-background-clip:text;
-color:transparent;
+.hero h1 {
+  font-family:Cinzel;
+  font-size:60px;
+  background:linear-gradient(90deg,white,gold);
+  -webkit-background-clip:text;
+  color:transparent;
 }
 
 /* BUTTON */
-.btn{
-margin-top:20px;
-padding:14px 30px;
-background:linear-gradient(90deg,gold,#fff);
-color:black;
-border-radius:30px;
-font-weight:bold;
-text-decoration:none;
+.btn {
+  background:gold;
+  color:black;
+  padding:12px 25px;
+  text-decoration:none;
+  border-radius:5px;
+  display:inline-block;
+  margin-top:15px;
 }
 
-/* SECTION */
-section{padding:60px 20px;}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-/* CARD */
-.card{
-background:#111;
-padding:20px;
-border-radius:10px;
+/* SECTIONS */
+section {
+  padding:60px 20px;
 }
 
 /* ESTIMATOR */
-.calc-box{
-background:rgba(122,63,255,.25);
-border:2px solid #7A3FFF;
-padding:30px;
-border-radius:15px;
-max-width:500px;
-margin:auto;
+.calc-box {
+  background:#111;
+  padding:30px;
+  max-width:500px;
+  margin:auto;
+  border-radius:10px;
 }
 
-input,select{
-width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:5px;
+input, select {
+  width:100%;
+  padding:10px;
+  margin-top:10px;
 }
 
-/* TOTAL */
-#total{
-font-size:42px;
-text-align:center;
-color:gold;
-font-weight:bold;
-margin-top:15px;
+#total {
+  font-size:42px;
+  color:gold;
+  text-align:center;
 }
 
-button{
-padding:12px;
-margin-top:10px;
-width:100%;
-background:gold;
-border:none;
-border-radius:5px;
+button {
+  padding:12px;
+  width:100%;
+  margin-top:10px;
 }
 
 /* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:36px;}
-.calc-box{width:90%;}
-.header{flex-direction:column;}
-}
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+.hero h1 {font-size:32px;}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
-
 <header class="header">
 
-<div class="logo">Tiger Tech</div>
+<div><strong>Tiger Tech Consulting</strong></div>
 
 <nav class="nav">
-#Home</a>
-#estimateEstimator</a>
-#portfolioPortfolio</a>
-#storeStore</a>
-</nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="contact.html">Contact</a>
 
-<div class="social">
-https://www.facebook.com/profile.php?id=61573692824278🔵</a>
-https://www.instagram.com/tigertechconsulting/?hl=en📸</a>
-https://www.tiktok.com/@lane.smith501🎵</a>
-</div>
+  <!-- ✅ LOCATION PAGES -->
+  <a href="virginia-beach.html">Virginia Beach</a>
+  <a href="chesapeake.html">Chesapeake</a>
+  <a href="norfolk.html">Norfolk</a>
+</nav>
 
 </header>
 
+<!-- HERO -->
 <section class="hero">
 <h1>Tiger Tech Consulting</h1>
 <p>Smart Homes • Lighting • IT Solutions</p>
-#estimate class="btn">Get Estimate</a>
+
+<a href="#estimate" class="btn">Get Estimate</a>
+
 </section>
 
 <!-- ESTIMATOR -->
 <section id="estimate">
+
 <h2 style="text-align:center;">Project Estimator</h2>
 
 <div class="calc-box">
@@ -188,7 +148,7 @@ https://www.tiktok.com/@lane.smith501🎵</a>
 <option value="audio">Audio</option>
 <option value="video">Video</option>
 <option value="network">Networking</option>
-<option value="garage">Garage</option>
+<option value="garage">Garage Door</option>
 </select>
 
 <div id="options"></div>
@@ -199,114 +159,98 @@ https://www.tiktok.com/@lane.smith501🎵</a>
 <button onclick="book()">Book Consultation</button>
 
 </div>
+
 </section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-<h2 style="text-align:center;">Projects</h2>
-<div class="grid">
-<div class="card">Smart Home Install</div>
-<div class="card">LED Lighting Upgrade</div>
-<div class="card">Home Theater</div>
-</div>
-</section>
+<!-- SERVICES -->
+<section>
+<h2 style="text-align:center;">Our Services</h2>
 
-<!-- STORE -->
-<section id="store">
-<h2 style="text-align:center;">Store</h2>
-<div class="grid">
-<div class="card">Thermostat - $199</div>
-<div class="card">Lighting Kit - $299</div>
-<div class="card">Audio System - $499</div>
+<div style="text-align:center;">
+  Smart Home Automation<br>
+  LED Lighting Installations<br>
+  Home Theater Systems<br>
+  Audio Systems<br>
+  Networking & IT Services
 </div>
+
 </section>
 
 <!-- REVIEWS -->
-<section style="text-align:center">
+<section style="text-align:center;">
+
 <h2>Customer Reviews</h2>
-https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed>
+
+<iframe src="https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed"
+width="100%" height="300" style="border:0;"></iframe>
+
 </section>
 
-<footer style="text-align:center;padding:30px;">
-<p>© 2026 Tiger Tech Consulting</p>
+<!-- SOCIAL -->
+<section style="text-align:center;">
+
+<a href="https://www.facebook.com/profile.php?id=61573692824278" target="_blank">Facebook</a> |
+<a href="https://www.instagram.com/tigertechconsulting/?hl=en" target="_blank">Instagram</a> |
+<a href="https://www.tiktok.com/@lane.smith501" target="_blank">TikTok</a>
+
+</section>
+
+<footer style="text-align:center;padding:20px;">
+© 2026 Tiger Tech Consulting
 </footer>
 
 <script>
 
 /* ESTIMATOR */
-let category=document.getElementById("category");
-let options=document.getElementById("options");
-let total=document.getElementById("total");
+const category = document.getElementById("category");
+const options = document.getElementById("options");
+const totalDisplay = document.getElementById("total");
 
-category.addEventListener("change",()=>{
-options.innerHTML='<input id="qty" type="number" placeholder="Enter quantity">';
+category.addEventListener("change", () => {
+  options.innerHTML = '<input id="qty" type="number" placeholder="Enter quantity">';
 });
 
-document.addEventListener("input",calc);
+/* CALCULATE */
+document.addEventListener("input", calculate);
+document.addEventListener("change", calculate);
 
-function calc(){
-let qty=parseInt(document.getElementById("qty")?.value);
+function calculate() {
 
-if(!qty||qty<=0){total.innerHTML="$0";return;}
+let qty = parseInt(document.getElementById("qty")?.value);
 
-let rate=150;
-let laborHours=qty*0.6+2;
+if(!qty || qty <= 0){
+  totalDisplay.innerHTML = "$0";
+  return;
+}
 
-if(category.value==="lighting")rate=180;
-if(category.value==="audio")rate=120;
+let rate = 150;
+let laborHours = qty * 0.6 + 2;
+
+if(category.value==="lighting") rate=180;
+if(category.value==="audio") rate=120;
 if(category.value==="video"){rate=100; laborHours=2;}
-if(category.value==="network")rate=90;
+if(category.value==="network") rate=90;
 if(category.value==="garage"){rate=250; laborHours=3;}
 
-let labor=(laborHours*125)+(laborHours*80);
+let labor = (laborHours * 125) + (laborHours * 80);
 
-let final=Math.round((qty*rate + labor + 50)*1.5);
+let total = Math.round((qty * rate + labor + 50) * 1.5);
 
-total.innerHTML="$"+final;
+totalDisplay.innerHTML = "$" + total;
 
-/* Save locally (dashboard prep) */
-localStorage.setItem("lastQuote", final);
 }
 
 /* RESET */
 function resetCalc(){
 category.value="";
 options.innerHTML="";
-total.innerHTML="$0";
+totalDisplay.innerHTML="$0";
 }
 
 /* BOOK */
 function book(){
 window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
 }
-
-/* PARTICLES */
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<50;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-dx:Math.random()-0.5,
-dy:Math.random()-0.5
-});
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{
-ctx.fillStyle="gold";
-ctx.fillRect(p.x,p.y,2,2);
-p.x+=p.dx;
-p.y+=p.dy;
-});
-requestAnimationFrame(animate);
-}
-animate();
 
 </script>
 
