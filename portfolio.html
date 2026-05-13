@@ -8,7 +8,7 @@
 
 <title>Portfolio | Tiger Tech Consulting</title>
 
-<meta name="description" content="View recent smart home, lighting, and home theater projects completed by Tiger Tech Consulting in Virginia Beach and surrounding areas.">
+<meta name="description" content="View recent smart home, lighting and AV projects completed by Tiger Tech Consulting across Virginia Beach and surrounding areas.">
 
 https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap
 
@@ -28,15 +28,8 @@ body {
   top:0;
   display:flex;
   justify-content:space-between;
-  align-items:center;
   padding:15px 30px;
   background:rgba(0,0,0,0.6);
-  backdrop-filter:blur(10px);
-}
-
-.logo {
-  font-family:'Cinzel';
-  font-size:20px;
 }
 
 /* NAV */
@@ -44,22 +37,6 @@ body {
   margin:0 12px;
   color:white;
   text-decoration:none;
-  position:relative;
-}
-
-.nav a::after {
-  content:"";
-  position:absolute;
-  bottom:-5px;
-  left:0;
-  width:0%;
-  height:2px;
-  background:gold;
-  transition:0.3s;
-}
-
-.nav a:hover::after {
-  width:100%;
 }
 
 /* HERO */
@@ -90,12 +67,11 @@ body {
   border-radius:10px;
   overflow:hidden;
   transition:0.3s;
-  box-shadow:0 0 10px rgba(0,0,0,0.5);
 }
 
 .card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 0 25px gold;
+  transform:translateY(-6px);
+  box-shadow:0 0 20px gold;
 }
 
 .card img {
@@ -108,26 +84,37 @@ body {
   padding:15px;
 }
 
-.card h3 {
-  margin:0 0 10px 0;
+/* TESTIMONIALS */
+.testimonials {
+  padding:50px 20px;
+}
+
+.testimonial-box {
+  background:#111;
+  padding:20px;
+  border-radius:10px;
+  margin:20px auto;
+  max-width:800px;
+  border-left:5px solid gold;
+}
+
+.quote {
+  font-style:italic;
 }
 
 /* CTA */
 .cta {
   text-align:center;
   padding:50px 20px;
-  border-top:1px solid #333;
 }
 
-/* BUTTON */
 .btn {
   padding:12px 25px;
-  margin-top:15px;
   background:gold;
   color:black;
   text-decoration:none;
   border-radius:5px;
-  display:inline-block;
+  font-weight:bold;
 }
 
 /* SOCIAL */
@@ -139,25 +126,23 @@ body {
 .social a {
   font-size:22px;
   margin:0 10px;
-  color:white;
   text-decoration:none;
+  color:white;
 }
 
 /* MOBILE */
 @media(max-width:768px){
 .hero h1{font-size:32px;}
-.grid{padding:20px;}
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header class="header">
 
-<div class="logo">Tiger Tech Consulting</div>
+<div>Tiger Tech Consulting</div>
 
 <nav class="nav">
 index.htmlHome</a>
@@ -169,53 +154,81 @@ blog.htmlBlog</a>
 </header>
 
 <section class="hero">
-<h1>Our Portfolio</h1>
-<p>Real Projects. Real Results. Built to Perform.</p>
+<h1>Our Work</h1>
+<p>High-End Installations. Real Results.</p>
 </section>
 
-<!-- PROJECT GRID -->
+<!-- PROJECTS -->
 <div class="grid">
 
 <div class="card">
 assets/images/project1.jpg
 <div class="card-content">
-<h3>Smart Home Installation</h3>
-<p>Complete home automation system with lighting, climate control, and mobile access.</p>
+<h3>Smart Home Automation</h3>
+<p>Full home automation with lighting, smart climate, and remote access.</p>
 </div>
 </div>
 
 <div class="card">
 assets/images/project2.jpg
 <div class="card-content">
-<h3>Custom LED Lighting</h3>
-<p>Outdoor roofline and landscape lighting designed for curb appeal and energy efficiency.</p>
+<h3>LED Lighting System</h3>
+<p>Custom roofline and landscape lighting for increased curb appeal.</p>
 </div>
 </div>
 
 <div class="card">
 assets/images/project3.jpg
 <div class="card-content">
-<h3>Home Theater System</h3>
-<p>Immersive surround sound and mounted display for a full cinematic experience.</p>
+<h3>Home Theater</h3>
+<p>Professional surround sound and mounted display installation.</p>
 </div>
 </div>
 
 <div class="card">
 assets/images/project4.jpg
 <div class="card-content">
-<h3>Business Network Setup</h3>
-<p>Secure, high-speed business network with structured cabling and system optimization.</p>
+<h3>Business Networking</h3>
+<p>Secure and reliable network infrastructure for commercial use.</p>
 </div>
 </div>
 
 </div>
 
-<!-- CTA SECTION -->
+<!-- ✅ TESTIMONIALS -->
+<section class="testimonials">
+
+<h2 style="text-align:center;">What Our Clients Say</h2>
+
+<div class="testimonial-box">
+<p class="quote">
+“Tiger Tech completely transformed our home. The lighting and audio system exceeded our expectations. Highly professional work.”
+</p>
+<p><strong>— Virginia Beach Homeowner</strong></p>
+</div>
+
+<div class="testimonial-box">
+<p class="quote">
+“They installed our entire smart home system and made everything incredibly easy to use. Reliable, knowledgeable, and efficient.”
+</p>
+<p><strong>— Chesapeake Client</strong></p>
+</div>
+
+<div class="testimonial-box">
+<p class="quote">
+“Our business network upgrade was seamless. Faster speeds and zero issues. We highly recommend Tiger Tech Consulting.”
+</p>
+<p><strong>— Norfolk Business Owner</strong></p>
+</div>
+
+</section>
+
+<!-- CTA -->
 <section class="cta">
 
-<h2>Ready to Transform Your Space?</h2>
+<h2>Ready to Upgrade Your Space?</h2>
 
-<p>Get an instant estimate or schedule a consultation today.</p>
+<p>Get a personalized estimate or schedule your consultation today.</p>
 
 index.html#estimate class="btn">Get Estimate</a>
 
