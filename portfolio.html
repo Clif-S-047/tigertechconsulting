@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio | Tiger Tech Consulting</title>
+
+<meta name="description" content="View recent smart home, lighting, and home theater projects completed by Tiger Tech Consulting in Virginia Beach and surrounding areas.">
+
+https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap
+
+<style>
+
+/* GLOBAL */
+body {
+  margin:0;
+  font-family:'Inter', sans-serif;
+  color:white;
+  background: radial-gradient(circle at top, #2a0f4d, #050505);
+}
+
+/* HEADER */
+.header {
+  position:sticky;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+}
+
+.logo {
+  font-family:'Cinzel';
+  font-size:20px;
+}
+
+/* NAV */
+.nav a {
+  margin:0 12px;
+  color:white;
+  text-decoration:none;
+  position:relative;
+}
+
+.nav a::after {
+  content:"";
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:gold;
+  transition:0.3s;
+}
+
+.nav a:hover::after {
+  width:100%;
+}
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:80px 20px;
+}
+
+.hero h1 {
+  font-family:'Cinzel';
+  font-size:50px;
+  background:linear-gradient(90deg,white,gold);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:25px;
+  padding:40px;
+}
+
+/* PROJECT CARD */
+.card {
+  background:#111;
+  border-radius:10px;
+  overflow:hidden;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 25px gold;
+}
+
+.card img {
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.card-content {
+  padding:15px;
+}
+
+.card h3 {
+  margin:0 0 10px 0;
+}
+
+/* CTA */
+.cta {
+  text-align:center;
+  padding:50px 20px;
+  border-top:1px solid #333;
+}
+
+/* BUTTON */
+.btn {
+  padding:12px 25px;
+  margin-top:15px;
+  background:gold;
+  color:black;
+  text-decoration:none;
+  border-radius:5px;
+  display:inline-block;
+}
+
+/* SOCIAL */
+.social {
+  text-align:center;
+  margin-top:20px;
+}
+
+.social a {
+  font-size:22px;
+  margin:0 10px;
+  color:white;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+.grid{padding:20px;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">Tiger Tech Consulting</div>
+
+<nav class="nav">
+index.htmlHome</a>
+about.htmlAbout</a>
+contact.htmlContact</a>
+blog.htmlBlog</a>
+</nav>
+
+</header>
+
+<section class="hero">
+<h1>Our Portfolio</h1>
+<p>Real Projects. Real Results. Built to Perform.</p>
+</section>
+
+<!-- PROJECT GRID -->
+<div class="grid">
+
+<div class="card">
+assets/images/project1.jpg
+<div class="card-content">
+<h3>Smart Home Installation</h3>
+<p>Complete home automation system with lighting, climate control, and mobile access.</p>
+</div>
+</div>
+
+<div class="card">
+assets/images/project2.jpg
+<div class="card-content">
+<h3>Custom LED Lighting</h3>
+<p>Outdoor roofline and landscape lighting designed for curb appeal and energy efficiency.</p>
+</div>
+</div>
+
+<div class="card">
+assets/images/project3.jpg
+<div class="card-content">
+<h3>Home Theater System</h3>
+<p>Immersive surround sound and mounted display for a full cinematic experience.</p>
+</div>
+</div>
+
+<div class="card">
+assets/images/project4.jpg
+<div class="card-content">
+<h3>Business Network Setup</h3>
+<p>Secure, high-speed business network with structured cabling and system optimization.</p>
+</div>
+</div>
+
+</div>
+
+<!-- CTA SECTION -->
+<section class="cta">
+
+<h2>Ready to Transform Your Space?</h2>
+
+<p>Get an instant estimate or schedule a consultation today.</p>
+
+index.html#estimate class="btn">Get Estimate</a>
+
+<br><br>
+
+https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation
+Book Consultation
+</a>
+
+</section>
+
+<!-- SOCIAL -->
+<div class="social">
+
+https://www.facebook.com/profile.php?id=61573692824278🔵</a>
+https://www.instagram.com/tigertechconsulting/?hl=en📸</a>
+https://www.tiktok.com/@lane.smith501🎵</a>
+
+</div>
+
+<footer style="text-align:center;padding:30px;">
+© 2026 Tiger Tech Consulting
+</footer>
+
+</body>
+</html>
