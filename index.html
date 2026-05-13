@@ -2,13 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tiger Tech Consulting | Smart Home Virginia Beach</title>
-<meta name="description" content="Smart home automation, LED lighting, and home theater installation in Virginia Beach, Chesapeake, and Norfolk.">
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+<meta name="description" content="Smart home, LED lighting, and IT services in Virginia Beach, Chesapeake, and Norfolk. Get an estimate or book today.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Inter&display=swap" rel="stylesheet">
 
 <style>
 
@@ -16,137 +18,80 @@
 body{
 margin:0;
 font-family:Inter;
+background:linear-gradient(to bottom,#1a0033,#050505);
 color:white;
-background: radial-gradient(circle at top,#2a0f4d,#050505);
-overflow-x:hidden;
 }
 
 /* HEADER */
-.header{
-position:sticky;
-top:0;
+header{
 display:flex;
 justify-content:space-between;
-align-items:center;
-padding:15px 30px;
-background:rgba(0,0,0,0.7);
-backdrop-filter:blur(8px);
+padding:20px;
+background:#0008;
 }
 
-.nav a{
-margin:0 10px;
+nav a{
 color:white;
+margin:0 10px;
 text-decoration:none;
-}
-
-.nav a:hover{
-color:gold;
 }
 
 /* HERO */
 .hero{
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
+padding:100px 20px;
 }
 
 .hero h1{
 font-family:Cinzel;
-font-size:65px;
-background:linear-gradient(90deg,white,gold);
--webkit-background-clip:text;
-color:transparent;
+font-size:50px;
 }
-
-.hero p{opacity:.8;}
 
 /* BUTTON */
 .btn{
-padding:14px 30px;
-background:linear-gradient(90deg,gold,#fff);
-border-radius:30px;
+background:gold;
+padding:10px 20px;
 color:black;
-text-decoration:none;
-margin-top:15px;
-font-weight:bold;
+display:inline-block;
+margin:10px;
+cursor:pointer;
 }
 
-/* SECTIONS */
-section{padding:60px 20px;}
-
-h2{text-align:center;}
+/* SECTION */
+section{padding:40px;}
 
 /* GRID */
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
-margin-top:30px;
 }
 
-/* CARDS */
-.card{
+/* BOX */
+.box{
 background:#111;
 padding:20px;
 border-radius:10px;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 20px gold;
-}
-
-/* ESTIMATOR */
-.calc-box{
-background:rgba(122,63,255,.3);
-border:2px solid #7A3FFF;
-padding:30px;
-border-radius:15px;
-max-width:500px;
-margin:auto;
-}
-
-input, select{
-width:100%;
-padding:10px;
-margin-top:10px;
-border-radius:5px;
-border:none;
 }
 
 /* TOTAL */
 #total{
-font-size:42px;
+font-size:40px;
 color:gold;
-font-weight:bold;
 text-align:center;
-margin-top:20px;
 }
 
-/* BUTTON */
-button{
-padding:12px;
-width:100%;
-margin-top:10px;
-border:none;
-background:gold;
-color:black;
-border-radius:5px;
-cursor:pointer;
-}
+/* INPUT */
+input,select{width:100%;padding:10px;margin-top:10px;}
+
+button{padding:10px;margin-top:10px;width:100%;}
 
 /* MOBILE */
 @media(max-width:768px){
-.hero h1{font-size:36px;}
-.calc-box{width:90%;}
-.header{flex-direction:column;}
+.hero h1{font-size:32px;}
 }
 
-/* PARTICLE CANVAS */
+/* PARTICLES */
 canvas{
 position:fixed;
 top:0;
@@ -159,63 +104,38 @@ z-index:-1;
 
 <body>
 
-<canvas id="bg"></canvas>
+<canvas id="c"></canvas>
 
-<header class="header">
+<header>
+<div>Tiger Tech</div>
 
-<div><strong>Tiger Tech</strong></div>
-
-<nav class="nav">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="portfolio.html">Portfolio</a>
-<a href="contact.html">Contact</a>
-
-<!-- LOCATION SEO -->
-<a href="virginia-beach.html">Virginia Beach</a>
+<nav>
+<a href="#estimate">Estimate</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#store">Store</a>
+<a href="#contact">Contact</a>
+<a href="virginia-beach.html">VB</a>
 <a href="chesapeake.html">Chesapeake</a>
 <a href="norfolk.html">Norfolk</a>
 </nav>
 
 </header>
 
-<!-- HERO -->
-<section class="hero">
+<div class="hero">
 <h1>Tiger Tech Consulting</h1>
-<p>Smart Homes • Lighting • IT Solutions</p>
-
-<a href="#estimate" class="btn">Get Instant Estimate</a>
-</section>
-
-<!-- SERVICES -->
-<section>
-<h2>Our Services</h2>
-
-<div class="grid">
-<div class="card">Smart Home Automation</div>
-<div class="card">LED Lighting Systems</div>
-<div class="card">Home Theater Installation</div>
-<div class="card">Whole-Home Audio</div>
-<div class="card">Networking & IT</div>
-<div class="card">Garage & Access Control</div>
+<p>Smart Home • Lighting • IT</p>
+<a class="btn" href="#estimate">Get Estimate</a>
 </div>
-
-</section>
 
 <!-- ESTIMATOR -->
 <section id="estimate">
-
-<h2>Project Estimator</h2>
-
-<div class="calc-box">
+<h2>Estimator</h2>
 
 <select id="category">
-<option value="">Select Service</option>
+<option value="">Select</option>
 <option value="lighting">Lighting</option>
 <option value="audio">Audio</option>
 <option value="video">Video</option>
-<option value="network">Networking</option>
-<option value="garage">Garage Door</option>
 </select>
 
 <div id="options"></div>
@@ -223,126 +143,158 @@ z-index:-1;
 <div id="total">$0</div>
 
 <button onclick="resetCalc()">Reset</button>
-<button onclick="book()">Book Consultation</button>
+</section>
+
+<!-- DASHBOARD -->
+<section>
+<h2>Your Saved Quotes</h2>
+<div id="quotes"></div>
+</section>
+
+<!-- STORE -->
+<section id="store">
+<h2>Store</h2>
+
+<div class="grid">
+
+<div class="box">
+Smart Thermostat $199
+<button onclick="addItem('Thermostat',199)">Add</button>
+</div>
+
+<div class="box">
+Lighting Kit $299
+<button onclick="addItem('Lighting Kit',299)">Add</button>
+</div>
 
 </div>
+
+<h3>Cart</h3>
+<div id="cart"></div>
+<button onclick="checkout()">Checkout</button>
 
 </section>
 
 <!-- PORTFOLIO -->
-<section>
-<h2>Recent Projects</h2>
+<section id="portfolio">
+<h2>Projects</h2>
 
 <div class="grid">
-<div class="card">Smart Home Install</div>
-<div class="card">LED Lighting Upgrade</div>
-<div class="card">Home Theater Setup</div>
+<div class="box">Smart Home Install</div>
+<div class="box">Lighting Upgrade</div>
+<div class="box">Theater Setup</div>
 </div>
 
 </section>
 
-<!-- STORE -->
-<section>
-<h2>Featured Products</h2>
+<!-- CONTACT -->
+<section id="contact">
+<h2>Contact</h2>
 
-<div class="grid">
-<div class="card">Smart Thermostat</div>
-<div class="card">LED Lighting Kits</div>
-<div class="card">Audio Systems</div>
-</div>
+<form action="https://formsubmit.co/YOUR_EMAIL" method="POST" onsubmit="return validate();">
 
-</section>
+<input id="name" name="name" placeholder="Name" required>
+<input id="email" type="email" name="email" placeholder="Email" required>
 
-<!-- REVIEWS -->
-<section style="text-align:center;">
-<h2>Customer Reviews</h2>
+<textarea name="message" placeholder="Message"></textarea>
 
-<iframe src="https://www.google.com/maps?q=Tiger+Tech+Consulting&output=embed" width="100%" height="300" style="border:0;"></iframe>
+<button type="submit">Send</button>
+
+</form>
 
 </section>
-
-<footer style="text-align:center;padding:30px;">
-<p>© 2026 Tiger Tech Consulting</p>
-</footer>
 
 <script>
 
 /* ESTIMATOR */
-const category = document.getElementById("category");
-const options = document.getElementById("options");
-const totalDisplay = document.getElementById("total");
+const category=document.getElementById("category");
+const options=document.getElementById("options");
+const totalDisplay=document.getElementById("total");
 
-category.addEventListener("change", ()=>{
-options.innerHTML = '<input id="qty" type="number" placeholder="Enter quantity">';
-});
+category.onchange=()=>{
+options.innerHTML='<input id="qty" type="number" placeholder="Qty">';
+};
 
-document.addEventListener("input", calculate);
+document.addEventListener("input",()=>{
 
-function calculate(){
+let qty=parseInt(document.getElementById("qty")?.value);
 
-let qty = parseInt(document.getElementById("qty")?.value);
+if(!qty){totalDisplay.innerHTML="$0";return;}
 
-if(!qty || qty <= 0){
-totalDisplay.innerHTML="$0";
-return;
-}
+let rate=150;
+let labor=qty*100;
 
-let rate = 150;
-let laborHours = qty * 0.6 + 2;
-
-if(category.value==="lighting") rate=180;
-if(category.value==="audio") rate=120;
-if(category.value==="video"){rate=100; laborHours=2;}
-if(category.value==="network") rate=90;
-if(category.value==="garage"){rate=250; laborHours=3;}
-
-let labor = (laborHours * 125) + (laborHours * 80);
-
-let total = Math.round((qty * rate + labor + 50) * 1.5);
+let total=qty*rate + labor;
 
 totalDisplay.innerHTML="$"+total;
 
+/* SAVE */
+let saved=JSON.parse(localStorage.getItem("quotes")||"[]");
+saved.push(total);
+localStorage.setItem("quotes",JSON.stringify(saved));
+loadQuotes();
+
+});
+
+/* LOAD DASHBOARD */
+function loadQuotes(){
+let data=JSON.parse(localStorage.getItem("quotes")||"[]");
+document.getElementById("quotes").innerHTML=data.map(x=>"$"+x).join("<br>");
 }
+loadQuotes();
 
 /* RESET */
 function resetCalc(){
-category.value="";
 options.innerHTML="";
 totalDisplay.innerHTML="$0";
 }
 
-/* BOOK */
-function book(){
-window.open("https://calendly.com/lane-smith-tigertechconsulting/smart-home-tech-consultation");
+/* STORE */
+let cart=[];
+
+function addItem(name,price){
+cart.push({name,price});
+renderCart();
+}
+
+function renderCart(){
+document.getElementById("cart").innerHTML=
+cart.map(x=>x.name+" $"+x.price).join("<br>");
+}
+
+function checkout(){
+alert("Checkout simulated. Connect Square for live payments.");
+}
+
+/* CONTACT VALIDATION */
+function validate(){
+let email=document.getElementById("email").value;
+if(!email.includes("@")){
+alert("Enter valid email");
+return false;
+}
+return true;
 }
 
 /* PARTICLES */
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
+let c=document.getElementById("c"),ctx=c.getContext("2d");
+c.width=window.innerWidth;
+c.height=window.innerHeight;
+let p=[];
 
-let particles=[];
-for(let i=0;i<60;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
-});
+for(let i=0;i<30;i++){
+p.push({x:Math.random()*c.width,y:Math.random()*c.height});
 }
 
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-particles.forEach(p=>{
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+p.forEach(dot=>{
 ctx.fillStyle="gold";
-ctx.fillRect(p.x,p.y,2,2);
-p.x+=p.dx;
-p.y+=p.dy;
+ctx.fillRect(dot.x,dot.y,2,2);
 });
-requestAnimationFrame(animate);
+requestAnimationFrame(draw);
 }
-animate();
+draw();
 
 </script>
 
