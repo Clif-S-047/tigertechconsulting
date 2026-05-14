@@ -7,8 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Tiger Tech Consulting | Smart Home Virginia Beach</title>
-
-<meta name="description" content="Smart home, LED lighting, and IT services in Virginia Beach, Chesapeake, and Norfolk. Get an estimate or book today.">
+<meta name="description" content="Smart home automation, LED lighting, and IT services in Virginia Beach, Chesapeake, and Norfolk.">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Inter&display=swap" rel="stylesheet">
 
@@ -28,6 +27,8 @@ display:flex;
 justify-content:space-between;
 padding:20px;
 background:#0008;
+position:sticky;
+top:0;
 }
 
 nav a{
@@ -47,30 +48,70 @@ font-family:Cinzel;
 font-size:50px;
 }
 
+/* SECTION WRAPPER */
+.section-container{
+max-width:900px;
+margin:auto;
+}
+
 /* BUTTON */
 .btn{
 background:gold;
-padding:10px 20px;
 color:black;
+padding:12px 20px;
 display:inline-block;
-margin:10px;
+margin-top:15px;
+border-radius:5px;
 cursor:pointer;
 }
-
-/* SECTION */
-section{padding:40px;}
 
 /* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+max-width:1100px;
+margin:auto;
 }
 
-/* BOX */
+/* CARD */
 .box{
 background:#111;
 padding:20px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px gold;
+}
+
+/* INPUTS */
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #333;
+background:#111;
+color:white;
+transition:.2s;
+}
+
+/* ✅ NEON GOLD FOCUS */
+input:focus,select:focus,textarea:focus{
+outline:none;
+border-color:gold;
+box-shadow:0 0 10px gold;
+}
+
+/* ESTIMATOR */
+.calc-box{
+max-width:500px;
+margin:40px auto;
+background:#111;
+padding:25px;
 border-radius:10px;
 }
 
@@ -79,19 +120,31 @@ border-radius:10px;
 font-size:40px;
 color:gold;
 text-align:center;
+margin-top:10px;
 }
 
-/* INPUT */
-input,select{width:100%;padding:10px;margin-top:10px;}
+/* BUTTON */
+button{
+padding:12px;
+width:100%;
+margin-top:10px;
+background:gold;
+color:black;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
 
-button{padding:10px;margin-top:10px;width:100%;}
+button:hover{
+box-shadow:0 0 12px gold;
+}
 
 /* MOBILE */
 @media(max-width:768px){
 .hero h1{font-size:32px;}
+.calc-box{width:90%;}
 }
 
-/* PARTICLES */
 canvas{
 position:fixed;
 top:0;
@@ -104,35 +157,41 @@ z-index:-1;
 
 <body>
 
-<canvas id="c"></canvas>
+<canvas id="bg"></canvas>
 
 <header>
-<div>Tiger Tech</div>
+
+<div><strong>Tiger Tech</strong></div>
 
 <nav>
-<a href="#estimate">Estimate</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#store">Store</a>
-<a href="#contact">Contact</a>
-<a href="virginia-beach.html">VB</a>
+<a href="index.html">Home</a>
+<a href="about.html">About</a>
+<a href="portfolio.html">Portfolio</a>
+<a href="contact.html">Contact</a>
+
+<a href="virginia-beach.html">Virginia Beach</a>
 <a href="chesapeake.html">Chesapeake</a>
 <a href="norfolk.html">Norfolk</a>
 </nav>
 
 </header>
 
+<!-- HERO -->
 <div class="hero">
 <h1>Tiger Tech Consulting</h1>
-<p>Smart Home • Lighting • IT</p>
-<a class="btn" href="#estimate">Get Estimate</a>
+<p>Smart Homes • Lighting • IT Solutions</p>
+<a href="#estimate" class="btn">Get Estimate</a>
 </div>
 
 <!-- ESTIMATOR -->
-<section id="estimate">
-<h2>Estimator</h2>
+<section id="estimate" class="section-container">
+
+<h2>Project Estimator</h2>
+
+<div class="calc-box">
 
 <select id="category">
-<option value="">Select</option>
+<option value="">Select Service</option>
 <option value="lighting">Lighting</option>
 <option value="audio">Audio</option>
 <option value="video">Video</option>
@@ -143,41 +202,46 @@ z-index:-1;
 <div id="total">$0</div>
 
 <button onclick="resetCalc()">Reset</button>
+
+</div>
+
 </section>
 
 <!-- DASHBOARD -->
-<section>
+<section class="section-container">
 <h2>Your Saved Quotes</h2>
 <div id="quotes"></div>
 </section>
 
 <!-- STORE -->
 <section id="store">
-<h2>Store</h2>
+<h2 style="text-align:center;">Store</h2>
 
 <div class="grid">
 
 <div class="box">
-Smart Thermostat $199
+Smart Thermostat - $199
 <button onclick="addItem('Thermostat',199)">Add</button>
 </div>
 
 <div class="box">
-Lighting Kit $299
+Lighting Kit - $299
 <button onclick="addItem('Lighting Kit',299)">Add</button>
 </div>
 
 </div>
 
+<div class="section-container">
 <h3>Cart</h3>
 <div id="cart"></div>
 <button onclick="checkout()">Checkout</button>
+</div>
 
 </section>
 
 <!-- PORTFOLIO -->
-<section id="portfolio">
-<h2>Projects</h2>
+<section>
+<h2 style="text-align:center;">Projects</h2>
 
 <div class="grid">
 <div class="box">Smart Home Install</div>
@@ -187,19 +251,25 @@ Lighting Kit $299
 
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="section-container">
+<h2>Testimonials</h2>
+
+<div class="box">“Amazing work, highly recommend.”</div>
+<div class="box">“Transformed our home lighting completely.”</div>
+
+</section>
+
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="section-container">
+
 <h2>Contact</h2>
 
-<form action="https://formsubmit.co/YOUR_EMAIL" method="POST" onsubmit="return validate();">
-
-<input id="name" name="name" placeholder="Name" required>
-<input id="email" type="email" name="email" placeholder="Email" required>
-
-<textarea name="message" placeholder="Message"></textarea>
-
+<form onsubmit="return validate()">
+<input id="name" placeholder="Name" required>
+<input id="email" placeholder="Email" required>
+<textarea placeholder="Message"></textarea>
 <button type="submit">Send</button>
-
 </form>
 
 </section>
@@ -212,58 +282,39 @@ const options=document.getElementById("options");
 const totalDisplay=document.getElementById("total");
 
 category.onchange=()=>{
-options.innerHTML='<input id="qty" type="number" placeholder="Qty">';
+options.innerHTML='<input id="qty" type="number" placeholder="Quantity">';
 };
 
 document.addEventListener("input",()=>{
-
 let qty=parseInt(document.getElementById("qty")?.value);
-
 if(!qty){totalDisplay.innerHTML="$0";return;}
 
-let rate=150;
-let labor=qty*100;
-
-let total=qty*rate + labor;
-
+let total=qty*200;
 totalDisplay.innerHTML="$"+total;
 
-/* SAVE */
 let saved=JSON.parse(localStorage.getItem("quotes")||"[]");
 saved.push(total);
 localStorage.setItem("quotes",JSON.stringify(saved));
 loadQuotes();
-
 });
 
-/* LOAD DASHBOARD */
+/* DASHBOARD */
 function loadQuotes(){
 let data=JSON.parse(localStorage.getItem("quotes")||"[]");
 document.getElementById("quotes").innerHTML=data.map(x=>"$"+x).join("<br>");
 }
 loadQuotes();
 
-/* RESET */
-function resetCalc(){
-options.innerHTML="";
-totalDisplay.innerHTML="$0";
-}
-
 /* STORE */
 let cart=[];
-
 function addItem(name,price){
 cart.push({name,price});
-renderCart();
-}
-
-function renderCart(){
 document.getElementById("cart").innerHTML=
 cart.map(x=>x.name+" $"+x.price).join("<br>");
 }
 
 function checkout(){
-alert("Checkout simulated. Connect Square for live payments.");
+alert("Checkout ready for payment integration.");
 }
 
 /* CONTACT VALIDATION */
@@ -277,15 +328,12 @@ return true;
 }
 
 /* PARTICLES */
-let c=document.getElementById("c"),ctx=c.getContext("2d");
-c.width=window.innerWidth;
-c.height=window.innerHeight;
+let c=document.getElementById("bg"),ctx=c.getContext("2d");
+c.width=innerWidth;c.height=innerHeight;
 let p=[];
-
 for(let i=0;i<30;i++){
 p.push({x:Math.random()*c.width,y:Math.random()*c.height});
 }
-
 function draw(){
 ctx.clearRect(0,0,c.width,c.height);
 p.forEach(dot=>{
