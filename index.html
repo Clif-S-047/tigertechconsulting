@@ -6,46 +6,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting Estimator</title>
+<title>Tiger Tech Consulting | Smart Home Virginia Beach</title>
+<meta name="description" content="Smart home automation, LED lighting, TV mounting and audio systems in Virginia Beach, Chesapeake and Norfolk.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Inter&display=swap" rel="stylesheet">
 
 <style>
+
+/* GLOBAL */
 body{
 margin:0;
-font-family:Arial;
-background:#050505;
+font-family:Inter;
+background:linear-gradient(to bottom,#1a0033,#050505);
 color:white;
+overflow-x:hidden;
 }
 
-/* CENTER */
+/* HEADER */
+header{
+display:flex;
+justify-content:space-between;
+padding:20px;
+background:#0008;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+/* NAV */
+nav a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+}
+
+nav a:hover{
+color:gold;
+}
+
+/* HERO */
+.hero{
+text-align:center;
+padding:100px 20px;
+}
+
+.hero h1{
+font-family:Cinzel;
+font-size:55px;
+background:linear-gradient(90deg,white,gold);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+/* BUTTON */
+.btn{
+background:gold;
+color:black;
+padding:12px 25px;
+border-radius:6px;
+text-decoration:none;
+display:inline-block;
+margin-top:15px;
+}
+
+/* SECTION */
 .section{
-max-width:750px;
+max-width:900px;
 margin:auto;
 padding:40px 20px;
 }
 
-/* BOX */
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+/* CARD */
+.box{
+background:#111;
+padding:20px;
+border-radius:10px;
+transition:.3s;
+}
+
+.box:hover{
+transform:translateY(-5px);
+box-shadow:0 0 15px gold;
+}
+
+/* INPUTS */
+input,select,textarea{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #333;
+background:#111;
+color:white;
+}
+
+/* ✅ GLOW */
+input:focus,select:focus,textarea:focus{
+outline:none;
+border-color:gold;
+box-shadow:0 0 12px gold;
+}
+
+/* ESTIMATOR */
 .calc-box{
 background:#111;
 padding:25px;
 border-radius:10px;
-}
-
-/* INPUT */
-input,select{
-width:100%;
-padding:12px;
-margin-top:10px;
-background:#111;
-color:white;
-border:1px solid #333;
-border-radius:5px;
-}
-
-/* NEON GOLD */
-input:focus,select:focus{
-outline:none;
-border-color:gold;
-box-shadow:0 0 10px gold;
 }
 
 /* TOTAL */
@@ -56,26 +129,66 @@ text-align:center;
 margin-top:20px;
 }
 
-/* BUTTON */
+/* BUTTONS */
 button{
 width:100%;
 padding:12px;
 margin-top:10px;
 background:gold;
-color:black;
 border:none;
-border-radius:5px;
+border-radius:6px;
 cursor:pointer;
 }
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+}
+
+/* PARTICLES */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="section">
+<canvas id="bg"></canvas>
 
-<h1 style="text-align:center;">Project Estimator</h1>
+<header>
+
+<div><strong>Tiger Tech</strong></div>
+
+<nav>
+#estimateEstimate</a>
+#portfolioPortfolio</a>
+#storeStore</a>
+#contactContact</a>
+
+<a href="virginia-beach.html">VB</a>
+<a href="chesapeake.html">Chesapeake</a>
+<a href="norfolk.html">Norfolk</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Tiger Tech Consulting</h1>
+<p>Smart Homes • Lighting • IT Solutions</p>
+<a href="#estimate" class="btn">Get Estimate</a>
+</div>
+
+<!-- ESTIMATOR -->
+<div class="section" id="estimate">
+
+<h2>Project Estimator</h2>
 
 <div class="calc-box">
 
@@ -95,220 +208,186 @@ cursor:pointer;
 
 </div>
 
+<!-- PORTFOLIO -->
+<div class="section" id="portfolio">
+<h2>Projects</h2>
+
+<div class="grid">
+<div class="box">Smart Home Install</div>
+<div class="box">Govee Roof Lighting</div>
+<div class="box">Home Theater Setup</div>
+</div>
+
+<h2>Testimonials</h2>
+<div class="box">“Outstanding work and professionalism.”</div>
+<div class="box">“Completely transformed our home.”</div>
+
+</div>
+
+<!-- STORE -->
+<div class="section" id="store">
+<h2>Store</h2>
+
+<div class="grid">
+<div class="box">Thermostat $199 <button onclick="addItem('Thermostat',199)">Add</button></div>
+<div class="box">Lighting Kit $299 <button onclick="addItem('Lighting',299)">Add</button></div>
+</div>
+
+<h3>Cart</h3>
+<div id="cart"></div>
+<button onclick="checkout()">Checkout</button>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+<h2>Contact</h2>
+
+<form onsubmit="return validate()">
+<input id="name" placeholder="Name" required>
+<input id="email" placeholder="Email" required>
+<textarea placeholder="Message"></textarea>
+<button type="submit">Send</button>
+</form>
+
+</div>
+
 <script>
 
+/* ================= ESTIMATOR ================= */
 const options=document.getElementById("options");
 const totalDisplay=document.getElementById("total");
-const category=document.getElementById("category");
 
-/* CATEGORY SWITCH */
-category.addEventListener("change",()=>{
-
+document.getElementById("category").addEventListener("change", ()=>{
 options.innerHTML="";
 
-/* ================= TV ================= */
+/* TV */
 if(category.value==="tv"){
 options.innerHTML=`
-
 <select id="tvSize">
 <option value="">TV Size</option>
-<option value="small">Under 50"</option>
-<option value="medium">50"-65"</option>
-<option value="large">70"-85"</option>
-<option value="xl">90"+</option>
+<option value="small">Under 50</option>
+<option value="medium">50-65</option>
+<option value="large">70-85</option>
 </select>
 
-<select id="mountType">
+<select id="fire">
 <option value="">Mount Location</option>
-<option value="standard">Standard Wall</option>
-<option value="fireplace">Above Fireplace</option>
+<option value="normal">Standard</option>
+<option value="fire">Fireplace</option>
 </select>
-
-<select id="wallType">
-<option value="">Wall Type</option>
-<option value="drywall">Drywall</option>
-<option value="brick">Brick</option>
-<option value="stone">Stone</option>
-<option value="concrete">Concrete</option>
-</select>
-
-<select id="tvBacklight">
-<option value="">Add Backlight?</option>
-<option value="none">No</option>
-<option value="55">TV Backlight 3 Pro (55-65")</option>
-<option value="75">TV Backlight 3 Pro (75-85")</option>
-</select>
-
 `;
 }
 
-/* ================= GOVEE ================= */
+/* GOVEE */
 if(category.value==="govee"){
 options.innerHTML=`
-
-<select id="model">
-<option value="">Select Type</option>
-<option value="pro">Govee Pro</option>
-<option value="prism">Govee Prism</option>
-<option value="strip">Govee Outdoor LED Strip</option>
+<select id="type">
+<option value="">Type</option>
+<option value="pro">Pro</option>
+<option value="prism">Prism</option>
+<option value="strip">Outdoor Strip</option>
 </select>
 
-<select id="length">
+<select id="size">
 <option value="">Length</option>
-<option value="100">100ft</option>
-<option value="150">150ft</option>
-<option value="200">200ft</option>
-
-<option value="32">32.8ft</option>
-<option value="65">65.6ft</option>
-<option value="98">98.4ft</option>
+<option value="100">100</option>
+<option value="150">150</option>
+<option value="200">200</option>
+<option value="32">32</option>
+<option value="65">65</option>
+<option value="98">98</option>
 </select>
 
-<select id="install">
-<option value="">Installation</option>
-<option value="standard">Standard</option>
-<option value="premium">Premium Tracks</option>
+<select id="story">
+<option value="">Stories</option>
+<option value="single">Single</option>
+<option value="multi">Multi</option>
 </select>
-
-<select id="stories">
-<option value="">Home Type</option>
-<option value="single">Single Story</option>
-<option value="multi">Multi-Story</option>
-</select>
-
 `;
 }
 
 });
 
 /* CALCULATE */
-document.addEventListener("change",calculate);
-
-function calculate(){
-
+document.addEventListener("change", ()=>{
 let total=0;
 
-/* ================= TV ================= */
+/* TV */
 if(category.value==="tv"){
-
 let size=document.getElementById("tvSize")?.value;
-let mount=document.getElementById("mountType")?.value;
-let wall=document.getElementById("wallType")?.value;
-let backlight=document.getElementById("tvBacklight")?.value;
-
-if(!size||!mount||!wall){
-totalDisplay.innerHTML="$0";
-return;
-}
-
-/* Base */
 if(size==="small") total=250;
 if(size==="medium") total=375;
 if(size==="large") total=450;
-if(size==="xl") total=600;
-
-/* Fireplace */
-if(mount==="fireplace") total+=100;
-
-/* Wall */
-if(wall==="brick") total+=125;
-if(wall==="stone") total+=150;
-if(wall==="concrete") total+=175;
-
-/* Backlight */
-if(backlight==="55") total+=179.98;
-if(backlight==="75") total+=209.98;
-
 }
 
-/* ================= GOVEE ================= */
+/* GOVEE */
 if(category.value==="govee"){
+let type=document.getElementById("type")?.value;
 
-let model=document.getElementById("model")?.value;
-let length=document.getElementById("length")?.value;
-let install=document.getElementById("install")?.value;
-let stories=document.getElementById("stories")?.value;
+if(type==="pro") total+=600;
+if(type==="prism") total+=700;
+if(type==="strip") total+=300;
 
-if(!model||!length||!install||!stories){
-totalDisplay.innerHTML="$0";
-return;
+let story=document.getElementById("story")?.value;
+if(story==="multi") total+=775;
 }
 
-/* LIGHT COST */
-if(model==="pro"){
-if(length==="100") total+=439.98;
-if(length==="150") total+=599.98;
-if(length==="200") total+=759.98;
-}
+/* MARKUP */
+total*=1.3;
 
-if(model==="prism"){
-if(length==="100") total+=539.98;
-if(length==="150") total+=699.99;
-if(length==="200") total+=859.98;
-}
-
-if(model==="strip"){
-if(length==="32") total+=74.99;
-if(length==="65") total+=139.98;
-if(length==="98") total+=189.98;
-}
-
-/* INSTALL */
-if(model==="pro"){
-if(install==="standard"){
-if(length==="100") total+=125;
-if(length==="150") total+=200;
-if(length==="200") total+=275;
-}
-if(install==="premium"){
-if(length==="100") total+=625;
-if(length==="150") total+=937.5;
-if(length==="200") total+=1250;
-}
-}
-
-if(model==="prism"){
-if(install==="standard") total+=150;
-if(install==="premium"){
-if(length==="100") total+=725;
-if(length==="150") total+=1037.5;
-if(length==="200") total+=1450;
-}
-}
-
-if(model==="strip"){
-if(install==="premium"){
-if(length==="32") total+=225;
-if(length==="65") total+=337.5;
-if(length==="98") total+=450;
-}
-}
-
-/* STORY */
-if(stories==="multi") total+=775;
-
-/* LABOR */
-if(stories==="single") total+=300;
-if(stories==="multi") total+=600;
-
-}
-
-/* ✅ FINAL MARKUP */
-total = total * 1.3;
-
-/* OUTPUT */
 totalDisplay.innerHTML="$"+Math.round(total);
-
-}
+});
 
 /* RESET */
 function resetCalc(){
 options.innerHTML="";
 totalDisplay.innerHTML="$0";
-category.value="";
 }
+
+/* STORE */
+let cart=[];
+function addItem(name,price){
+cart.push({name,price});
+document.getElementById("cart").innerHTML=cart.map(x=>x.name+" $"+x.price).join("<br>");
+}
+
+function checkout(){
+alert("Checkout ready for payment system");
+}
+
+/* CONTACT */
+function validate(){
+let email=document.getElementById("email").value;
+if(!email.includes("@")){
+alert("Enter valid email");
+return false;
+}
+return true;
+}
+
+/* PARTICLES */
+const c=document.getElementById("bg");
+const ctx=c.getContext("2d");
+c.width=innerWidth;c.height=innerHeight;
+
+let p=[];
+for(let i=0;i<30;i++){
+p.push({x:Math.random()*c.width,y:Math.random()*c.height});
+}
+
+function draw(){
+ctx.clearRect(0,0,c.width,c.height);
+p.forEach(dot=>{
+ctx.fillStyle="gold";
+ctx.fillRect(dot.x,dot.y,2,2);
+});
+requestAnimationFrame(draw);
+}
+draw();
 
 </script>
 
 </body>
 </html>
+
