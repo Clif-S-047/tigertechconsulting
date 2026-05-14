@@ -6,113 +6,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting | Smart Home Virginia Beach</title>
-<meta name="description" content="Smart home automation, LED lighting, and IT services in Virginia Beach, Chesapeake, and Norfolk.">
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Inter&display=swap" rel="stylesheet">
+<title>Tiger Tech Consulting</title>
 
 <style>
-
-/* GLOBAL */
 body{
 margin:0;
-font-family:Inter;
-background:linear-gradient(to bottom,#1a0033,#050505);
+font-family:Arial;
+background:#050505;
 color:white;
 }
 
-/* HEADER */
-header{
-display:flex;
-justify-content:space-between;
-padding:20px;
-background:#0008;
-position:sticky;
-top:0;
-}
-
-nav a{
-color:white;
-margin:0 10px;
-text-decoration:none;
-}
-
-/* HERO */
-.hero{
-text-align:center;
-padding:100px 20px;
-}
-
-.hero h1{
-font-family:Cinzel;
-font-size:50px;
-}
-
-/* SECTION WRAPPER */
+/* LAYOUT */
 .section-container{
 max-width:900px;
 margin:auto;
+padding:40px 20px;
 }
 
-/* BUTTON */
-.btn{
-background:gold;
-color:black;
-padding:12px 20px;
-display:inline-block;
-margin-top:15px;
-border-radius:5px;
-cursor:pointer;
-}
-
-/* GRID */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-max-width:1100px;
-margin:auto;
-}
-
-/* CARD */
-.box{
-background:#111;
-padding:20px;
-border-radius:10px;
-transition:0.3s;
-}
-
-.box:hover{
-transform:translateY(-5px);
-box-shadow:0 0 15px gold;
-}
-
-/* INPUTS */
-input,select,textarea{
-width:100%;
-padding:12px;
-margin-top:10px;
-border-radius:6px;
-border:1px solid #333;
-background:#111;
-color:white;
-transition:.2s;
-}
-
-/* ✅ NEON GOLD FOCUS */
-input:focus,select:focus,textarea:focus{
-outline:none;
-border-color:gold;
-box-shadow:0 0 10px gold;
-}
-
-/* ESTIMATOR */
+/* BOX */
 .calc-box{
-max-width:500px;
-margin:40px auto;
 background:#111;
 padding:25px;
 border-radius:10px;
+max-width:500px;
+margin:auto;
+}
+
+/* INPUT */
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#111;
+color:white;
+border:1px solid #333;
+border-radius:5px;
+}
+
+/* ✅ GLOW EFFECT */
+input:focus, select:focus{
+outline:none;
+border-color:gold;
+box-shadow:0 0 10px gold;
 }
 
 /* TOTAL */
@@ -120,13 +55,13 @@ border-radius:10px;
 font-size:40px;
 color:gold;
 text-align:center;
-margin-top:10px;
+margin-top:20px;
 }
 
 /* BUTTON */
 button{
-padding:12px;
 width:100%;
+padding:12px;
 margin-top:10px;
 background:gold;
 color:black;
@@ -135,66 +70,21 @@ border-radius:5px;
 cursor:pointer;
 }
 
-button:hover{
-box-shadow:0 0 12px gold;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.hero h1{font-size:32px;}
-.calc-box{width:90%;}
-}
-
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
 </style>
 </head>
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="section-container">
 
-<header>
-
-<div><strong>Tiger Tech</strong></div>
-
-<nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="portfolio.html">Portfolio</a>
-<a href="contact.html">Contact</a>
-
-<a href="virginia-beach.html">Virginia Beach</a>
-<a href="chesapeake.html">Chesapeake</a>
-<a href="norfolk.html">Norfolk</a>
-</nav>
-
-</header>
-
-<!-- HERO -->
-<div class="hero">
-<h1>Tiger Tech Consulting</h1>
-<p>Smart Homes • Lighting • IT Solutions</p>
-<a href="#estimate" class="btn">Get Estimate</a>
-</div>
-
-<!-- ESTIMATOR -->
-<section id="estimate" class="section-container">
-
-<h2>Project Estimator</h2>
+<h1 style="text-align:center;">Project Estimator</h1>
 
 <div class="calc-box">
 
 <select id="category">
 <option value="">Select Service</option>
+<option value="tv">TV Mounting</option>
 <option value="lighting">Lighting</option>
-<option value="audio">Audio</option>
-<option value="video">Video</option>
 </select>
 
 <div id="options"></div>
@@ -205,144 +95,96 @@ z-index:-1;
 
 </div>
 
-</section>
-
-<!-- DASHBOARD -->
-<section class="section-container">
-<h2>Your Saved Quotes</h2>
-<div id="quotes"></div>
-</section>
-
-<!-- STORE -->
-<section id="store">
-<h2 style="text-align:center;">Store</h2>
-
-<div class="grid">
-
-<div class="box">
-Smart Thermostat - $199
-<button onclick="addItem('Thermostat',199)">Add</button>
 </div>
-
-<div class="box">
-Lighting Kit - $299
-<button onclick="addItem('Lighting Kit',299)">Add</button>
-</div>
-
-</div>
-
-<div class="section-container">
-<h3>Cart</h3>
-<div id="cart"></div>
-<button onclick="checkout()">Checkout</button>
-</div>
-
-</section>
-
-<!-- PORTFOLIO -->
-<section>
-<h2 style="text-align:center;">Projects</h2>
-
-<div class="grid">
-<div class="box">Smart Home Install</div>
-<div class="box">Lighting Upgrade</div>
-<div class="box">Theater Setup</div>
-</div>
-
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section-container">
-<h2>Testimonials</h2>
-
-<div class="box">“Amazing work, highly recommend.”</div>
-<div class="box">“Transformed our home lighting completely.”</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="section-container">
-
-<h2>Contact</h2>
-
-<form onsubmit="return validate()">
-<input id="name" placeholder="Name" required>
-<input id="email" placeholder="Email" required>
-<textarea placeholder="Message"></textarea>
-<button type="submit">Send</button>
-</form>
-
-</section>
 
 <script>
 
-/* ESTIMATOR */
-const category=document.getElementById("category");
 const options=document.getElementById("options");
 const totalDisplay=document.getElementById("total");
+const category=document.getElementById("category");
 
-category.onchange=()=>{
-options.innerHTML='<input id="qty" type="number" placeholder="Quantity">';
-};
+/* CATEGORY */
+category.addEventListener("change",()=>{
 
-document.addEventListener("input",()=>{
-let qty=parseInt(document.getElementById("qty")?.value);
-if(!qty){totalDisplay.innerHTML="$0";return;}
+options.innerHTML="";
 
-let total=qty*200;
+if(category.value==="tv"){
+options.innerHTML=`
+
+<select id="tvSize">
+<option value="">TV Size</option>
+<option value="small">Under 50"</option>
+<option value="medium">50"-65"</option>
+<option value="large">70"-85"</option>
+<option value="xl">90"+</option>
+</select>
+
+<select id="mountType">
+<option value="">Mount Location</option>
+<option value="standard">Standard Wall</option>
+<option value="fireplace">Above Fireplace</option>
+</select>
+
+<select id="wallType">
+<option value="">Wall Type</option>
+<option value="drywall">Drywall</option>
+<option value="brick">Brick</option>
+<option value="stone">Stone</option>
+<option value="concrete">Concrete</option>
+</select>
+
+`;
+
+}
+
+});
+
+/* CALCULATE */
+document.addEventListener("change",calculate);
+
+function calculate(){
+
+if(category.value!=="tv") return;
+
+/* GET VALUES */
+let size=document.getElementById("tvSize")?.value;
+let mount=document.getElementById("mountType")?.value;
+let wall=document.getElementById("wallType")?.value;
+
+/* WAIT UNTIL ALL SELECTED */
+if(!size||!mount||!wall){
+totalDisplay.innerHTML="$0";
+return;
+}
+
+/* BASE PRICE */
+let total=0;
+
+/* SIZE PRICING */
+if(size==="small") total=250;
+if(size==="medium") total=375;
+if(size==="large") total=450;
+if(size==="xl") total=600;
+
+/* FIREPLACE ADD */
+if(mount==="fireplace") total+=100;
+
+/* WALL TYPE ADD */
+if(wall==="brick") total+=125;
+if(wall==="stone") total+=150;
+if(wall==="concrete") total+=175;
+
+/* FINAL */
 totalDisplay.innerHTML="$"+total;
 
-let saved=JSON.parse(localStorage.getItem("quotes")||"[]");
-saved.push(total);
-localStorage.setItem("quotes",JSON.stringify(saved));
-loadQuotes();
-});
-
-/* DASHBOARD */
-function loadQuotes(){
-let data=JSON.parse(localStorage.getItem("quotes")||"[]");
-document.getElementById("quotes").innerHTML=data.map(x=>"$"+x).join("<br>");
-}
-loadQuotes();
-
-/* STORE */
-let cart=[];
-function addItem(name,price){
-cart.push({name,price});
-document.getElementById("cart").innerHTML=
-cart.map(x=>x.name+" $"+x.price).join("<br>");
 }
 
-function checkout(){
-alert("Checkout ready for payment integration.");
+/* RESET */
+function resetCalc(){
+options.innerHTML="";
+totalDisplay.innerHTML="$0";
+category.value="";
 }
-
-/* CONTACT VALIDATION */
-function validate(){
-let email=document.getElementById("email").value;
-if(!email.includes("@")){
-alert("Enter valid email");
-return false;
-}
-return true;
-}
-
-/* PARTICLES */
-let c=document.getElementById("bg"),ctx=c.getContext("2d");
-c.width=innerWidth;c.height=innerHeight;
-let p=[];
-for(let i=0;i<30;i++){
-p.push({x:Math.random()*c.width,y:Math.random()*c.height});
-}
-function draw(){
-ctx.clearRect(0,0,c.width,c.height);
-p.forEach(dot=>{
-ctx.fillStyle="gold";
-ctx.fillRect(dot.x,dot.y,2,2);
-});
-requestAnimationFrame(draw);
-}
-draw();
 
 </script>
 
