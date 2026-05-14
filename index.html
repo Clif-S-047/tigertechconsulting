@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tiger Tech Consulting</title>
+<title>Tiger Tech Consulting Estimator</title>
 
 <style>
 body{
@@ -16,9 +16,9 @@ background:#050505;
 color:white;
 }
 
-/* LAYOUT */
-.section-container{
-max-width:900px;
+/* CENTERED LAYOUT */
+.section{
+max-width:700px;
 margin:auto;
 padding:40px 20px;
 }
@@ -28,8 +28,6 @@ padding:40px 20px;
 background:#111;
 padding:25px;
 border-radius:10px;
-max-width:500px;
-margin:auto;
 }
 
 /* INPUT */
@@ -43,8 +41,8 @@ border:1px solid #333;
 border-radius:5px;
 }
 
-/* ✅ GLOW EFFECT */
-input:focus, select:focus{
+/* NEON GOLD FOCUS */
+input:focus,select:focus{
 outline:none;
 border-color:gold;
 box-shadow:0 0 10px gold;
@@ -52,7 +50,7 @@ box-shadow:0 0 10px gold;
 
 /* TOTAL */
 #total{
-font-size:40px;
+font-size:42px;
 color:gold;
 text-align:center;
 margin-top:20px;
@@ -69,13 +67,13 @@ border:none;
 border-radius:5px;
 cursor:pointer;
 }
-
 </style>
+
 </head>
 
 <body>
 
-<div class="section-container">
+<div class="section">
 
 <h1 style="text-align:center;">Project Estimator</h1>
 
@@ -84,7 +82,7 @@ cursor:pointer;
 <select id="category">
 <option value="">Select Service</option>
 <option value="tv">TV Mounting</option>
-<option value="lighting">Lighting</option>
+<option value="govee">Govee Lighting</option>
 </select>
 
 <div id="options"></div>
@@ -103,11 +101,12 @@ const options=document.getElementById("options");
 const totalDisplay=document.getElementById("total");
 const category=document.getElementById("category");
 
-/* CATEGORY */
+/* CATEGORY SWITCH */
 category.addEventListener("change",()=>{
 
 options.innerHTML="";
 
+/* ✅ TV MOUNTING */
 if(category.value==="tv"){
 options.innerHTML=`
 
@@ -121,7 +120,7 @@ options.innerHTML=`
 
 <select id="mountType">
 <option value="">Mount Location</option>
-<option value="standard">Standard Wall</option>
+<option value="standard">Standard</option>
 <option value="fireplace">Above Fireplace</option>
 </select>
 
@@ -134,48 +133,159 @@ options.innerHTML=`
 </select>
 
 `;
+}
 
+
+/* ✅ GOVEE LIGHTING */
+if(category.value==="govee"){
+options.innerHTML=`
+
+<select id="model">
+<option value="">Select Model</option>
+<option value="pro">Govee Pro</option>
+<option value="prism">Govee Prism</option>
+</select>
+
+<select id="length">
+<option value="">Length</option>
+<option value="100">100ft</option>
+<option value="150">150ft</option>
+<option value="200">200ft</option>
+</select>
+
+<select id="install">
+<option value="">Installation Type</option>
+<option value="standard">Standard</option>
+<option value="premium">Premium (Tracks)</option>
+</select>
+
+<select id="stories">
+<option value="">Home Type</option>
+<option value="single">Single Story</option>
+<option value="multi">Multi-Story</option>
+</select>
+
+`;
 }
 
 });
 
 /* CALCULATE */
-document.addEventListener("change",calculate);
+document.addEventListener("change", calculate);
 
 function calculate(){
 
-if(category.value!=="tv") return;
+/* ================= TV LOGIC ================= */
+if(category.value==="tv"){
 
-/* GET VALUES */
 let size=document.getElementById("tvSize")?.value;
 let mount=document.getElementById("mountType")?.value;
 let wall=document.getElementById("wallType")?.value;
 
-/* WAIT UNTIL ALL SELECTED */
 if(!size||!mount||!wall){
 totalDisplay.innerHTML="$0";
 return;
 }
 
-/* BASE PRICE */
 let total=0;
 
-/* SIZE PRICING */
+/* SIZE */
 if(size==="small") total=250;
 if(size==="medium") total=375;
 if(size==="large") total=450;
 if(size==="xl") total=600;
 
-/* FIREPLACE ADD */
+/* FIREPLACE */
 if(mount==="fireplace") total+=100;
 
-/* WALL TYPE ADD */
+/* WALL TYPE */
 if(wall==="brick") total+=125;
 if(wall==="stone") total+=150;
 if(wall==="concrete") total+=175;
 
-/* FINAL */
 totalDisplay.innerHTML="$"+total;
+return;
+}
+
+/* ================= GOVEE LOGIC ================= */
+if(category.value==="govee"){
+
+let model=document.getElementById("model")?.value;
+let length=document.getElementById("length")?.value;
+let install=document.getElementById("install")?.value;
+let stories=document.getElementById("stories")?.value;
+
+if(!model||!length||!install||!stories){
+totalDisplay.innerHTML="$0";
+return;
+}
+
+let total=0;
+
+/* LIGHT COST */
+if(model==="pro"){
+if(length==="100") total+=439.98;
+if(length==="150") total+=599.98;
+if(length==="200") total+=759.98;
+}
+
+if(model==="prism"){
+if(length==="100") total+=539.98;
+if(length==="150") total+=699.99;
+if(length==="200") total+=859.98;
+}
+
+/* INSTALL COST */
+if(model==="pro"){
+
+if(install==="standard"){
+if(length==="100") total+=125;
+if(length==="150") total+=200;
+if(length==="200") total+=275;
+}
+
+if(install==="premium"){
+if(length==="100") total+=625;
+if(length==="150") total+=937.5;
+if(length==="200") total+=1250;
+}
+
+}
+
+if(model==="prism"){
+
+if(install==="standard"){
+total+=150;
+}
+
+if(install==="premium"){
+if(length==="100") total+=725;
+if(length==="150") total+=1037.5;
+if(length==="200") total+=1450;
+}
+
+}
+
+/* STORY TYPE */
+if(stories==="multi"){
+total+=775; // boom lift
+}
+
+/* LABOR ADJUST */
+if(stories==="single"){
+total+=300; // 2 tech estimate
+}
+if(stories==="multi"){
+total+=600; // 3 tech estimate
+}
+
+/* MARKUP */
+total = total * 1.3;
+
+/* FINAL */
+totalDisplay.innerHTML="$"+Math.round(total);
+
+}
 
 }
 
