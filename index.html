@@ -107,7 +107,7 @@ background:#111;
 color:white;
 }
 
-/* ✅ GLOW */
+/* GLOW */
 input:focus,select:focus,textarea:focus{
 outline:none;
 border-color:gold;
@@ -129,7 +129,7 @@ text-align:center;
 margin-top:20px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 button{
 width:100%;
 padding:12px;
@@ -166,10 +166,10 @@ z-index:-1;
 <div><strong>Tiger Tech</strong></div>
 
 <nav>
-#estimateEstimate</a>
-#portfolioPortfolio</a>
-#storeStore</a>
-#contactContact</a>
+<a href="#estimate">Estimate</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#store">Store</a>
+<a href="#contact">Contact</a>
 
 <a href="virginia-beach.html">VB</a>
 <a href="chesapeake.html">Chesapeake</a>
@@ -254,52 +254,75 @@ z-index:-1;
 
 <script>
 
-/* ================= ESTIMATOR ================= */
-const options=document.getElementById("options");
-const totalDisplay=document.getElementById("total");
+/* ESTIMATOR */
+const options = document.getElementById("options");
+const totalDisplay = document.getElementById("total");
+const category = document.getElementById("category");
 
-document.getElementById("category").addEventListener("change", ()=>{
-options.innerHTML="";
+category.addEventListener("change", () => {
 
-/* TV */
+options.innerHTML = "";
+
+/* TV QUESTIONS */
 if(category.value==="tv"){
-options.innerHTML=`
+options.innerHTML = `
 <select id="tvSize">
 <option value="">TV Size</option>
-<option value="small">Under 50</option>
-<option value="medium">50-65</option>
-<option value="large">70-85</option>
+<option value="small">Under 50"</option>
+<option value="medium">50-65"</option>
+<option value="large">70-85"</option>
+<option value="xl">90"+</option>
 </select>
 
-<select id="fire">
+<select id="mountType">
 <option value="">Mount Location</option>
-<option value="normal">Standard</option>
-<option value="fire">Fireplace</option>
+<option value="standard">Standard</option>
+<option value="fireplace">Fireplace</option>
+</select>
+
+<select id="wallType">
+<option value="">Wall Type</option>
+<option value="drywall">Drywall</option>
+<option value="brick">Brick</option>
+<option value="stone">Stone</option>
+<option value="concrete">Concrete</option>
+</select>
+
+<select id="tvBacklight">
+<option value="none">Backlight</option>
+<option value="55">55-65 Kit</option>
+<option value="75">75-85 Kit</option>
 </select>
 `;
 }
 
-/* GOVEE */
+/* GOVEE QUESTIONS */
 if(category.value==="govee"){
-options.innerHTML=`
-<select id="type">
+options.innerHTML = `
+<select id="model">
 <option value="">Type</option>
 <option value="pro">Pro</option>
 <option value="prism">Prism</option>
-<option value="strip">Outdoor Strip</option>
+<option value="strip">Strip</option>
 </select>
 
-<select id="size">
+<select id="length">
 <option value="">Length</option>
-<option value="100">100</option>
-<option value="150">150</option>
-<option value="200">200</option>
-<option value="32">32</option>
-<option value="65">65</option>
-<option value="98">98</option>
+<option value="100">100ft</option>
+<option value="150">150ft</option>
+<option value="200">200ft</option>
+<option value="32">32ft</option>
+<option value="65">65ft</option>
+<option value="98">98ft</option>
 </select>
 
-<select id="story">
+<select id="install">
+<option value="">Install</option>
+<option value="standard">Standard</option>
+<option value="premium">Premium</option>
+</select>
+
+<select id="stories">
 <option value="">Stories</option>
 <option value="single">Single</option>
 <option value="multi">Multi</option>
@@ -310,30 +333,84 @@ options.innerHTML=`
 });
 
 /* CALCULATE */
-document.addEventListener("change", ()=>{
-let total=0;
+document.addEventListener("change", () => {
+
+let total = 0;
 
 /* TV */
 if(category.value==="tv"){
-let size=document.getElementById("tvSize")?.value;
-if(size==="small") total=250;
+let size = document.getElementById("tvSize")?.value;
+let mount = document.getElementById("mountType")?.value;
+let wall = document.getElementById("wallType")?.value;
+let back = document.getElementById("tvBacklight")?.value;
+
+if(!size||!mount||!wall){totalDisplay.innerHTML="$0";return;}
+
+if(size==="small") total=275;
 if(size==="medium") total=375;
 if(size==="large") total=450;
+if(size==="xl") total=600;
+
+if(mount==="fireplace") total+=100;
+
+if(wall==="brick") total+=125;
+if(wall==="stone") total+=150;
+if(wall==="concrete") total+=175;
+
+if(back==="55") total+=180;
+if(back==="75") total+=210;
 }
 
 /* GOVEE */
 if(category.value==="govee"){
-let type=document.getElementById("type")?.value;
+let model=document.getElementById("model")?.value;
+let length=document.getElementById("length")?.value;
+let install=document.getElementById("install")?.value;
+let stories=document.getElementById("stories")?.value;
 
-if(type==="pro") total+=600;
-if(type==="prism") total+=700;
-if(type==="strip") total+=300;
+if(!model||!length||!install||!stories){totalDisplay.innerHTML="$0";return;}
 
-let story=document.getElementById("story")?.value;
-if(story==="multi") total+=775;
+if(model==="pro"){
+if(length==="100") total+=440;
+if(length==="150") total+=600;
+if(length==="200") total+=760;
+if(install==="standard"){
+if(length==="100") total+=125;
+if(length==="150") total+=200;
+if(length==="200") total+=275;
+}
+if(install==="premium"){
+if(length==="100") total+=625;
+if(length==="150") total+=937;
+if(length==="200") total+=1250;
+}
 }
 
-/* MARKUP */
+if(model==="prism"){
+if(length==="100") total+=540;
+if(length==="150") total+=700;
+if(length==="200") total+=860;
+if(install==="standard") total+=150;
+if(install==="premium"){
+if(length==="100") total+=725;
+if(length==="150") total+=1037;
+if(length==="200") total+=1450;
+}
+}
+
+if(model==="strip"){
+if(length==="32") total+=75;
+if(length==="65") total+=140;
+if(length==="98") total+=190;
+if(length==="32") total+=225;
+if(length==="65") total+=337;
+if(length==="98") total+=450;
+}
+
+if(stories==="multi") total+=775;
+total += (stories==="multi")?600:300;
+}
+
 total*=1.3;
 
 totalDisplay.innerHTML="$"+Math.round(total);
@@ -343,6 +420,7 @@ totalDisplay.innerHTML="$"+Math.round(total);
 function resetCalc(){
 options.innerHTML="";
 totalDisplay.innerHTML="$0";
+category.value="";
 }
 
 /* STORE */
@@ -352,9 +430,7 @@ cart.push({name,price});
 document.getElementById("cart").innerHTML=cart.map(x=>x.name+" $"+x.price).join("<br>");
 }
 
-function checkout(){
-alert("Checkout ready for payment system");
-}
+function checkout(){alert("Ready for payment integration");}
 
 /* CONTACT */
 function validate(){
@@ -370,12 +446,8 @@ return true;
 const c=document.getElementById("bg");
 const ctx=c.getContext("2d");
 c.width=innerWidth;c.height=innerHeight;
-
 let p=[];
-for(let i=0;i<30;i++){
-p.push({x:Math.random()*c.width,y:Math.random()*c.height});
-}
-
+for(let i=0;i<30;i++){p.push({x:Math.random()*c.width,y:Math.random()*c.height});}
 function draw(){
 ctx.clearRect(0,0,c.width,c.height);
 p.forEach(dot=>{
@@ -390,4 +462,3 @@ draw();
 
 </body>
 </html>
-
